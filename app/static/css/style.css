@@ -1,26 +1,3 @@
-:root {
-    /* Dark theme (default) */
-    --bg-color: #1e1e1e;
-    --text-color: #33ff33;
-    --prompt-color: #00ff00;
-    --header-bg: #2d2d2d;
-    --font-family: 'Fira Code', monospace;
-    --border-color: #333;
-    --top-bar-bg: #2d2d2d;
-    --top-bar-text: #ffffff;
-}
-
-/* Light theme */
-[data-theme="light"] {
-    --bg-color: #f4f4f4;
-    --text-color: #333333;
-    --prompt-color: #0066cc;
-    --header-bg: #e4e4e4;
-    --border-color: #ccc;
-    --top-bar-bg: #e4e4e4;
-    --top-bar-text: #333333;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -28,186 +5,37 @@
 }
 
 body {
-    background-color: var(--bg-color);
-    font-family: var(--font-family);
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Asegura que los elementos se coloquen en columna */
-}
-
-/* Barra superior fija estilo header */
-.top-bar {
-    background-color: var(--top-bar-bg);
-    color: var(--top-bar-text);
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed; /* Hace que la barra esté fija en la parte superior */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
-    z-index: 1000;
-    display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-}
-
-.contact-info {
-    display: flex;
-    align-items: center; /* Alinea verticalmente los íconos y texto */
-    gap: 20px; /* Espaciado uniforme entre los elementos */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
-    max-width: 1200px; /* Limita el ancho máximo del contenido */
-    width: 100%;
-}
-
-.contact-info span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--top-bar-text);
-}
-
-.contact-info span:hover {
-    text-decoration: underline; /* Efecto interactivo al pasar el mouse */
-    cursor: pointer;
-}
-
-.terminal {
-    width: 100%;
-    max-width: 800px;
-    background-color: var(--bg-color);
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    font-family: 'Fira Code', monospace;
+    background-color: #1e1e1e;
     overflow: hidden;
-    transition: background-color 0.3s ease;
-    margin: 80px auto 0; /* Añade margen superior para evitar que el terminal se superponga con la barra */
     display: flex;
-    flex-direction: column;
-}
-
-.terminal-header {
-    background-color: var(--header-bg);
-    padding: 10px;
-    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    height: 100vh;
+    color: #f0f0f0;
 }
 
-.controls {
-    display: flex;
-    gap: 8px;
+canvas {
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.control {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+.info {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+    text-align: center;
 }
 
-.close { background-color: #ff5f56; }
-.minimize { background-color: #ffbd2e; }
-.maximize { background-color: #27c93f; }
-
-.title {
-    color: var(--text-color);
-    font-size: 14px;
-    flex-grow: 1;
-    margin-left: 20px;
-}
-
-.header-controls {
-    display: flex;
-    gap: 10px;
-}
-
-.header-btn {
-    background: none;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-family);
-    transition: all 0.2s ease;
-}
-
-.header-btn:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-}
-
-.terminal-content {
-    padding: 20px;
-    height: 500px; /* Fija la altura del terminal */
-    display: flex;
-    flex-direction: column;
-    color: var(--text-color);
-    position: relative;
-    overflow-y: auto; /* Evita que crezca cuando se escribe */
-}
-
-#output {
-    flex: 1;
-    overflow-y: auto; /* Añade scroll si el contenido es muy largo */
-    padding-bottom: 50px;
-    max-height: 400px; /* Altura máxima para el área de salida */
-}
-
-.input-line {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--bg-color);
-    padding: 10px 20px;
-    display: flex;
-    margin-top: 10px;
-    border-top: 1px solid var(--border-color);
-}
-
-.prompt {
-    color: var(--prompt-color);
-    margin-right: 10px;
-}
-
-#command-input {
-    background: transparent;
-    border: none;
-    color: var(--text-color);
-    font-family: var(--font-family);
-    font-size: inherit;
-    outline: none;
-    width: 100%;
-}
-
-.ascii-art {
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-pre {
-    white-space: pre-wrap;
-}
-
-.section {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-left: 2px solid var(--prompt-color);
-}
-
-@media (max-width: 600px) {
-    .contact-info {
-        flex-direction: column; /* Apila los elementos verticalmente en pantallas pequeñas */
-        align-items: center;
-        gap: 10px;
-    }
-
-    .terminal {
-        height: 100vh;
-        border-radius: 0;
-    }
-
-    .terminal-content {
-        height: calc(100vh - 60px);
+@media (max-width: 768px) {
+    .info {
+        font-size: 10px;
+        width: 90%;
+        white-space: normal;
     }
 }

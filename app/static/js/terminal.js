@@ -1,479 +1,697 @@
-class Terminal {
-    constructor() {
-        this.commandInput = document.getElementById('command-input');
-        this.output = document.getElementById('output');
-        this.themeToggle = document.getElementById('themeToggle');
-        this.langToggle = document.getElementById('langToggle');
-        this.currentLang = 'en';
-        this.setupEventListeners();
+export class Terminal {
+    constructor(canvas, directoryStructure, translations) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
+        this.directoryStructure = directoryStructure;
+        this.translations = translations;
+        
+        // Terminal state
+        this.fontSize = 16;
+        this.lineHeight = this.fontSize + 8;
+        this.terminalOutput = [];
+        this.command = "";
         this.commandHistory = [];
         this.historyIndex = -1;
-
-        this.translations = {
-            en: {
-                welcome: 'Welcome to my interactive CV! Type \'help\' to see available commands.',
-                commands: {
-                    'help': 'Display available commands',
-                    'about': 'Display information about me',
-                    'experience': 'Show work experience',
-                    'education': 'Show educational background',
-                    'skills': 'List technical skills (type \'skills\' to explore)',
-                    'projects': 'Show notable projects',
-                    'contact': 'Display contact information',
-                    'clear': 'Clear the terminal',
-                    'whoami': 'Display current user',
-                    'ls': 'List available sections',
-                    'matrix': 'Display a fun matrix animation'
-                },
-                content: {
-                    about: `<div class="section">
-                        <h2>About Me</h2>
-                        <p>I am a passionate software developer with expertise in web development
-                        and a strong foundation in computer science. I love creating elegant
-                        solutions to complex problems and am constantly learning new technologies.</p>
-                    </div>`,
-                    experience: `<div class="section">
-                        <h2>Work Experience</h2>
-                        <pre>
-Senior Software Developer | TechCorp
-2020 - Present
-• Led development of enterprise web applications
-• Mentored junior developers
-• Implemented CI/CD pipelines
-
-Software Developer | StartupX
-2018 - 2020
-• Developed full-stack applications
-• Worked with agile methodologies
-• Improved application performance by 40%
-                        </pre>
-                    </div>`,
-                    education: `<div class="section">
-                        <h2>Education</h2>
-                        <pre>
-Universidad Católica San Pablo          Arequipa, Perú
-Ingeniería Informática                  2003 - 2007
-
-Universidad Continental                 Arequipa, Perú
-Ingeniería Industrial                   2016 - 2019
-
-42 Network sede Madrid                  Madrid, España
-Programador bajo nivel                  2020 - 2023
-                        </pre>
-                    </div>`,
-                    skills: `<div class="section">
-                        <h2>Technical Skills</h2>
-                        <pre>
-Type 'skills' to explore categories:
-1. Programming Languages
-2. Frameworks and Libraries
-3. Applications
-4. Databases
-5. Development Tools
-6. Servers and Services
-7. Others
-                        </pre>
-                    </div>`,
-                    projects: `<div class="section">
-                        <h2>Notable Projects</h2>
-                        <pre>
-Terminal CV
-• Interactive terminal-styled online CV
-• Built with Flask and vanilla JavaScript
-• Responsive design with terminal aesthetics
-
-E-Commerce Platform
-• Full-stack web application
-• Implemented payment processing
-• Real-time inventory management
-                        </pre>
-                    </div>`,
-                    contact: `<div class="section">
-                        <h2>Contact Information</h2>
-                        <pre>
-Email:    developer@example.com
-GitHub:   github.com/developer
-LinkedIn: linkedin.com/in/developer
-                        </pre>
-                    </div>`,
-                    ls: `<pre>
-about/
-experience/
-education/
-skills/
-projects/
-contact/
-                    </pre>`
-                }
-            },
-            es: {
-                welcome: '¡Bienvenido a mi CV interactivo! Escribe \'help\' para ver los comandos disponibles.',
-                commands: {
-                    'help': 'Mostrar comandos disponibles',
-                    'about': 'Mostrar información sobre mí',
-                    'experience': 'Mostrar experiencia laboral',
-                    'education': 'Mostrar formación académica',
-                    'skills': 'Listar habilidades técnicas (escribe \'skills\' para explorar)',
-                    'projects': 'Mostrar proyectos destacados',
-                    'contact': 'Mostrar información de contacto',
-                    'clear': 'Limpiar la terminal',
-                    'whoami': 'Mostrar usuario actual',
-                    'ls': 'Listar secciones disponibles',
-                    'matrix': 'Mostrar una animación matrix'
-                },
-                content: {
-                    about: `<div class="section">
-                        <h2>Sobre Mí</h2>
-                        <p>Soy un desarrollador de software apasionado con experiencia en desarrollo web
-                        y una sólida base en ciencias de la computación. Me encanta crear soluciones
-                        elegantes para problemas complejos y estoy constantemente aprendiendo nuevas tecnologías.</p>
-                    </div>`,
-                    experience: `<div class="section">
-                        <h2>Experiencia Laboral</h2>
-                        <pre>
-Desarrollador Senior de Software | TechCorp
-2020 - Presente
-• Lideré el desarrollo de aplicaciones web empresariales
-• Mentoré a desarrolladores junior
-• Implementé pipelines de CI/CD
-
-Desarrollador de Software | StartupX
-2018 - 2020
-• Desarrollé aplicaciones full-stack
-• Trabajé con metodologías ágiles
-• Mejoré el rendimiento de la aplicación en un 40%
-                        </pre>
-                    </div>`,
-                    education: `<div class="section">
-                        <h2>Formación Académica</h2>
-                        <pre>
-Universidad Católica San Pablo          Arequipa, Perú
-Ingeniería Informática                  2003 - 2007
-
-Universidad Continental                 Arequipa, Perú
-Ingeniería Industrial                   2016 - 2019
-
-42 Network sede Madrid                  Madrid, España
-Programador bajo nivel                  2020 - 2023
-                        </pre>
-                    </div>`,
-                    skills: `<div class="section">
-                        <h2>Habilidades Técnicas</h2>
-                        <pre>
-Escribe 'skills' para explorar categorías:
-1. Lenguajes de Programación
-2. Frameworks y Bibliotecas
-3. Aplicativos
-4. Bases de Datos
-5. Herramientas de Desarrollo
-6. Servidores y Servicios
-7. Otros
-                        </pre>
-                    </div>`,
-                    projects: `<div class="section">
-                        <h2>Proyectos Destacados</h2>
-                        <pre>
-CV de Terminal
-• CV interactivo con estilo de terminal
-• Construido con Flask y JavaScript
-• Diseño adaptable con estética de terminal
-
-Plataforma de Comercio Electrónico
-• Aplicación web full-stack
-• Implementación de procesamiento de pagos
-• Gestión de inventario en tiempo real
-                        </pre>
-                    </div>`,
-                    contact: `<div class="section">
-                        <h2>Información de Contacto</h2>
-                        <pre>
-Correo electrónico:    developer@example.com
-GitHub:   github.com/developer
-LinkedIn: linkedin.com/in/developer
-                        </pre>
-                    </div>`,
-                    ls: `<pre>
-sobre/
-experiencia/
-formacion/
-habilidades/
-proyectos/
-contacto/
-                    </pre>`
-                }
+        this.cursorPosition = 0;
+        this.cursorVisible = true;
+        this.theme = "dark";
+        this.lang = "en";
+        this.scrollOffset = 0;
+        this.currentPath = "/";
+        this.tabSuggestions = [];
+        this.showingSuggestions = false;
+        this.lastTabTime = 0;
+        
+        // Bind event handlers
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleWheel = this.handleWheel.bind(this);
+        this.handleResize = this.handleResize.bind(this);
+    }
+    
+    // Initialize the terminal
+    init() {
+        // Setup event listeners
+        document.addEventListener("keydown", this.handleKeyDown);
+        this.canvas.addEventListener("wheel", this.handleWheel);
+        window.addEventListener("resize", this.handleResize);
+        
+        // Start cursor blinking
+        this.cursorInterval = setInterval(() => {
+            this.cursorVisible = !this.cursorVisible;
+            this.drawInterface();
+        }, 500);
+        
+        // Add welcome message
+        this.terminalOutput.push(this.translations[this.lang].welcome);
+        
+        // Initial render
+        this.resizeCanvas();
+    }
+    
+    // Resize the canvas to fit the window
+    resizeCanvas() {
+        const devicePixelRatio = window.devicePixelRatio || 1;
+        
+        // Set the actual size of the canvas
+        this.canvas.width = (window.innerWidth - 40) * devicePixelRatio;
+        this.canvas.height = (window.innerHeight - 40) * devicePixelRatio;
+        
+        // Set the display size of the canvas
+        this.canvas.style.width = `${window.innerWidth - 40}px`;
+        this.canvas.style.height = `${window.innerHeight - 40}px`;
+        
+        // Scale the context to account for the device pixel ratio
+        this.ctx.scale(devicePixelRatio, devicePixelRatio);
+        
+        // Adjust font size based on screen width, but with limits
+        this.fontSize = Math.max(12, Math.min(18, window.innerWidth / 80));
+        this.lineHeight = this.fontSize + 8;
+        
+        // Set the font with the new size
+        this.ctx.font = `${this.fontSize}px 'Fira Code', monospace`;
+        
+        // Update the display with the new dimensions
+        this.drawInterface();
+    }
+    
+    // Calculate visible lines in the terminal area
+    getVisibleLines() {
+        const terminalHeight = this.canvas.height / (window.devicePixelRatio || 1) - 110;
+        return Math.floor(terminalHeight / this.lineHeight);
+    }
+    
+    // Update scroll position
+    updateScroll(forceToBottom = false) {
+        const visibleLines = this.getVisibleLines();
+        const isAtBottom = this.scrollOffset === Math.max(0, this.terminalOutput.length - visibleLines);
+        
+        if (forceToBottom || isAtBottom) {
+            this.scrollOffset = Math.max(0, this.terminalOutput.length - visibleLines);
+        }
+    }
+    
+    // Draw the terminal interface
+    drawInterface() {
+        const canvasWidth = this.canvas.width / (window.devicePixelRatio || 1);
+        const canvasHeight = this.canvas.height / (window.devicePixelRatio || 1);
+        
+        // Clear canvas
+        this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+        
+        // Set colors based on theme
+        const bgColor = this.theme === "dark" ? "#1e1e1e" : "#f4f4f4";
+        const headerBgColor = this.theme === "dark" ? "#2d2d2d" : "#e4e4e4";
+        const mainTextColor = this.theme === "dark" ? "#33ff33" : "#333333";
+        const headerTextColor = this.theme === "dark" ? "#ffffff" : "#333333";
+        const promptColor = this.theme === "dark" ? "#00ff00" : "#0066cc";
+        const suggestionColor = this.theme === "dark" ? "#888888" : "#888888";
+        
+        // Fill background
+        this.ctx.fillStyle = bgColor;
+        this.ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        
+        // Draw header
+        this.ctx.fillStyle = headerBgColor;
+        this.ctx.fillRect(0, 0, canvasWidth, 50);
+        
+        // Set font for header
+        this.ctx.font = `${this.fontSize}px 'Fira Code', monospace`;
+        this.ctx.fillStyle = headerTextColor;
+        
+        // Draw header text (adjusted for screen size)
+        const headerText = "👤 Angel Gonzales  📧 jgonzales@peruyoung.com  🌐 github.com/hanjelito";
+        
+        // Measure and potentially truncate the header text based on canvas width
+        const headerWidth = this.ctx.measureText(headerText).width;
+        let displayHeaderText = headerText;
+        
+        if (headerWidth > canvasWidth - 20) {
+            // Truncate and add ellipsis if too wide
+            let truncatedText = "👤 Angel Gonzales  📧 jgonzales@peruyoung.com";
+            if (this.ctx.measureText(truncatedText).width > canvasWidth - 20) {
+                truncatedText = "👤 Angel Gonzales";
             }
-        };
-
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        this.setTheme(savedTheme);
-
-        const savedLang = localStorage.getItem('lang') || 'en';
-        this.setLanguage(savedLang);
-    }
-
-    setupEventListeners() {
-        this.commandInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                this.handleCommand();
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                this.navigateHistory('up');
-            } else if (e.key === 'ArrowDown') {
-                e.preventDefault();
-                this.navigateHistory('down');
-            }
-        });
-
-        this.themeToggle.addEventListener('click', () => {
-            const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            this.setTheme(newTheme);
-        });
-
-        this.langToggle.addEventListener('click', () => {
-            const newLang = this.currentLang === 'en' ? 'es' : 'en';
-            this.setLanguage(newLang);
-        });
-    }
-
-    setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        this.themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
-    }
-
-    setLanguage(lang) {
-        this.currentLang = lang;
-        localStorage.setItem('lang', lang);
-        this.langToggle.textContent = lang === 'en' ? '🌐 ES' : '🌐 EN';
-        if (this.output.children.length === 2) {
-            this.output.lastElementChild.textContent = this.translations[lang].welcome;
+            displayHeaderText = truncatedText;
+        }
+        
+        this.ctx.fillText(displayHeaderText, 10, 30);
+        
+        // Draw terminal area
+        this.ctx.fillStyle = bgColor;
+        this.ctx.fillRect(10, 60, canvasWidth - 20, canvasHeight - 70);
+        
+        // Draw terminal content
+        this.ctx.fillStyle = mainTextColor;
+        const visibleLines = this.getVisibleLines();
+        const startLine = this.scrollOffset;
+        const endLine = Math.min(startLine + visibleLines, this.terminalOutput.length);
+        
+        let y = 80;
+        for (let i = startLine; i < endLine; i++) {
+            this.ctx.fillText(this.terminalOutput[i], 20, y);
+            y += this.lineHeight;
+        }
+        
+        // Draw command prompt
+        this.ctx.fillStyle = promptColor;
+        const promptText = `visitor@cv:${this.currentPath}$ `;
+        const promptWidth = this.ctx.measureText(promptText).width;
+        this.ctx.fillText(promptText, 20, y);
+        
+        // Draw current command with cursor
+        const textBeforeCursor = this.command.substring(0, this.cursorPosition);
+        const textAfterCursor = this.command.substring(this.cursorPosition);
+        const cursorX = 20 + promptWidth + this.ctx.measureText(textBeforeCursor).width;
+        
+        this.ctx.fillText(textBeforeCursor, 20 + promptWidth, y);
+        
+        if (this.cursorVisible) {
+            this.ctx.fillRect(cursorX, y - this.fontSize, 2, this.fontSize);
+        }
+        
+        this.ctx.fillText(textAfterCursor, cursorX, y);
+        
+        // Draw tab suggestions if any
+        if (this.showingSuggestions && this.tabSuggestions.length > 0) {
+            this.ctx.fillStyle = suggestionColor;
+            this.ctx.fillText(
+                `${this.translations[this.lang].suggestions} ${this.tabSuggestions.join(', ')}`,
+                20,
+                y + this.lineHeight
+            );
         }
     }
-
-    navigateHistory(direction) {
-        if (direction === 'up' && this.historyIndex < this.commandHistory.length - 1) {
-            this.historyIndex++;
-        } else if (direction === 'down' && this.historyIndex > -1) {
-            this.historyIndex--;
-        }
-
-        if (this.historyIndex >= 0 && this.historyIndex < this.commandHistory.length) {
-            this.commandInput.value = this.commandHistory[this.commandHistory.length - 1 - this.historyIndex];
-        } else {
-            this.commandInput.value = '';
-        }
-    }
-
-    handleCommand() {
-        const command = this.commandInput.value.trim().toLowerCase();
-        this.commandHistory.push(command);
-        this.appendOutput(`<span class="prompt">visitor@cv:~$</span> ${command}`);
-
-        const [baseCommand, argument] = command.split(' ');
-
-        switch (baseCommand) {
-            case 'help':
-                this.showHelp();
+    
+    // Process user commands
+    processCommand(cmd) {
+        if (cmd.trim() === "") return;
+        
+        // Add command to history
+        this.commandHistory.unshift(cmd);
+        if (this.commandHistory.length > 50) this.commandHistory.pop();
+        this.historyIndex = -1;
+        
+        // Clear suggestions
+        this.showingSuggestions = false;
+        this.tabSuggestions = [];
+        
+        // Parse command and arguments
+        const args = cmd.trim().split(/\s+/);
+        const mainCommand = args[0].toLowerCase();
+        
+        // Process based on command
+        switch (mainCommand) {
+            case "help":
+                this.terminalOutput.push(...this.translations[this.lang].help);
                 break;
-            case 'about':
-                this.showAbout();
+                
+            case "about":
+                this.terminalOutput.push(this.translations[this.lang].about);
                 break;
-            case 'experience':
-                this.showExperience();
+                
+            case "experience":
+                this.terminalOutput.push(this.translations[this.lang].experience);
                 break;
-            case 'education':
-                this.showEducation();
+                
+            case "education":
+                this.terminalOutput.push(this.translations[this.lang].education);
                 break;
-            case 'skills':
-                if (argument) {
-                    this.showSkillCategory(argument);
+                
+            case "projects":
+                this.terminalOutput.push(this.translations[this.lang].projects);
+                break;
+                
+            case "skills":
+                this.terminalOutput.push(this.translations[this.lang].skills);
+                break;
+                
+            case "clear":
+                this.terminalOutput = [];
+                break;
+                
+            case "theme":
+                this.toggleTheme();
+                return;
+                
+            case "lang":
+                this.toggleLanguage();
+                return;
+                
+            case "ls":
+                this.listDirectory(args[1] || this.currentPath);
+                break;
+                
+            case "cd":
+                this.changeDirectory(args[1] || "/");
+                break;
+                
+            case "cat":
+                if (args.length < 2) {
+                    this.terminalOutput.push("Usage: cat [filename]");
                 } else {
-                    this.showSkillsMenu();
+                    this.displayFile(args[1]);
                 }
                 break;
-            case 'projects':
-                this.showProjects();
-                break;
-            case 'contact':
-                this.showContact();
-                break;
-            case 'clear':
-                this.clearTerminal();
-                break;
-            case 'whoami':
-                this.appendOutput('visitor');
-                break;
-            case 'ls':
-                this.showLS();
-                break;
-            case 'matrix':
-                this.showMatrix();
-                break;
-            case '':
-                break;
+                
             default:
-                this.appendOutput(`Command not found: ${command}. Type 'help' for available commands.`);
+                this.terminalOutput.push(`${this.translations[this.lang].unknown} ${mainCommand}`);
         }
-
-        this.commandInput.value = '';
-        this.scrollToBottom();
+        
+        this.updateScroll(true);
     }
-
-    appendOutput(content) {
-        const p = document.createElement('p');
-        p.innerHTML = content;
-        this.output.appendChild(p);
+    
+    // Toggle between light and dark theme
+    toggleTheme() {
+        this.theme = this.theme === "dark" ? "light" : "dark";
+        document.body.style.backgroundColor = this.theme === "dark" ? "#1e1e1e" : "#f4f4f4";
+        this.drawInterface();
     }
-
-    showHelp() {
-        let helpText = this.currentLang === 'en' ? 'Available commands:\n\n' : 'Comandos disponibles:\n\n';
-        const commands = this.translations[this.currentLang].commands;
-        for (const [cmd, desc] of Object.entries(commands)) {
-            helpText += `${cmd.padEnd(15)} - ${desc}\n`;
+    
+    // Toggle between English and Spanish
+    toggleLanguage() {
+        this.lang = this.lang === "en" ? "es" : "en";
+        this.terminalOutput.push(this.translations[this.lang].welcome);
+        this.updateScroll(true);
+        this.drawInterface();
+    }
+    
+    // Get directory or file from path
+    getItemFromPath(path) {
+        // Handle absolute and relative paths
+        const fullPath = path.startsWith("/") ? path : (this.currentPath + "/" + path).replace(/\/+/g, "/");
+        
+        // Split path into segments
+        const segments = fullPath.split("/").filter(Boolean);
+        
+        // Start from root
+        let current = this.directoryStructure["/"];
+        
+        // Traverse the path
+        for (let i = 0; i < segments.length; i++) {
+            const segment = segments[i];
+            
+            // Handle ".." (go up one directory)
+            if (segment === "..") {
+                // Remove the last segment from the path
+                segments.splice(i - 1, 2);
+                i -= 2;
+                
+                // If we went beyond the root, reset to root
+                if (i < -1) {
+                    current = this.directoryStructure["/"];
+                    i = -1;
+                } else {
+                    // Recalculate current from root
+                    current = this.directoryStructure["/"];
+                    for (let j = 0; j <= i; j++) {
+                        current = current.contents[segments[j]];
+                    }
+                }
+            } else if (current.contents && current.contents[segment]) {
+                current = current.contents[segment];
+            } else {
+                return null; // Item not found
+            }
         }
-        this.appendOutput(`<pre>${helpText}</pre>`);
+        
+        return current;
     }
-
-    showAbout() {
-        this.appendOutput(this.translations[this.currentLang].content.about);
+    
+    // List directory contents
+    listDirectory(path) {
+        const item = path ? this.getItemFromPath(path) : this.getItemFromPath(this.currentPath);
+        
+        if (!item) {
+            this.terminalOutput.push(`${this.translations[this.lang].notFound} ${path}`);
+            return;
+        }
+        
+        if (item.type !== "folder") {
+            this.terminalOutput.push(`${this.translations[this.lang].notDirectory} ${path}`);
+            return;
+        }
+        
+        const contents = Object.keys(item.contents);
+        
+        if (contents.length === 0) {
+            this.terminalOutput.push("Directory is empty");
+            return;
+        }
+        
+        // Group items by type (folders first, then files)
+        const folders = contents.filter(name => item.contents[name].type === "folder")
+            .map(name => `📁 ${name}/`);
+        
+        const files = contents.filter(name => item.contents[name].type === "file")
+            .map(name => `📄 ${name}`);
+        
+        // Output the sorted items
+        this.terminalOutput.push(...folders, ...files);
     }
-
-    showExperience() {
-        this.appendOutput(this.translations[this.currentLang].content.experience);
+    
+    // Change current directory
+    changeDirectory(path) {
+        // Handle special cases
+        if (path === "/") {
+            this.currentPath = "/";
+            return;
+        }
+        
+        if (path === "..") {
+            // Go up one directory
+            const segments = this.currentPath.split("/").filter(Boolean);
+            segments.pop();
+            this.currentPath = "/" + segments.join("/");
+            return;
+        }
+        
+        // Get the target directory
+        const item = this.getItemFromPath(path);
+        
+        if (!item) {
+            this.terminalOutput.push(`${this.translations[this.lang].notFound} ${path}`);
+            return;
+        }
+        
+        if (item.type !== "folder") {
+            this.terminalOutput.push(`${this.translations[this.lang].notDirectory} ${path}`);
+            return;
+        }
+        
+        // Update the current path
+        if (path.startsWith("/")) {
+            this.currentPath = path;
+        } else {
+            this.currentPath = (this.currentPath + "/" + path).replace(/\/+/g, "/");
+        }
+        
+        // Ensure the path starts with "/"
+        if (!this.currentPath.startsWith("/")) {
+            this.currentPath = "/" + this.currentPath;
+        }
     }
-
-    showEducation() {
-        this.appendOutput(this.translations[this.currentLang].content.education);
+    
+    // Display file contents
+    displayFile(path) {
+        const item = this.getItemFromPath(path);
+        
+        if (!item) {
+            this.terminalOutput.push(`${this.translations[this.lang].notFound} ${path}`);
+            return;
+        }
+        
+        if (item.type !== "file") {
+            this.terminalOutput.push(`${this.translations[this.lang].notFile} ${path}`);
+            return;
+        }
+        
+        // Split content into lines and add to terminal output
+        const lines = item.content.split("\n");
+        this.terminalOutput.push(...lines);
     }
-
-    showSkillsMenu() {
-        this.appendOutput(this.translations[this.currentLang].content.skills);
+    
+    // Generate autocompletion suggestions
+    generateAutocompleteSuggestions() {
+        // Parse the current command
+        const args = this.command.trim().split(/\s+/);
+        
+        // If empty command, no suggestions
+        if (args[0] === "") {
+            return [];
+        }
+        
+        // First word (command) autocompletion
+        if (args.length === 1 && !this.command.endsWith(" ")) {
+            const commandStart = args[0].toLowerCase();
+            const commands = ["help", "about", "experience", "education", "projects", "skills", "clear", "theme", "lang", "ls", "cd", "cat"];
+            return commands.filter(cmd => cmd.startsWith(commandStart));
+        }
+        
+        // File/directory autocompletion for commands that need it
+        if ((args[0] === "cd" || args[0] === "ls" || args[0] === "cat") && args.length <= 2) {
+            let path = args[1] || "";
+            
+            // Get the current directory's contents
+            let currentDir;
+            let dirPath;
+            
+            if (path.includes("/") && !path.startsWith("/")) {
+                // Handle relative paths with subdirectories
+                const lastSlashIndex = path.lastIndexOf("/");
+                const dirPart = path.substring(0, lastSlashIndex + 1);
+                path = path.substring(lastSlashIndex + 1);
+                dirPath = this.getItemFromPath(this.currentPath + "/" + dirPart);
+            } else if (path.startsWith("/")) {
+                // Handle absolute paths
+                const lastSlashIndex = path.lastIndexOf("/");
+                const dirPart = path.substring(0, lastSlashIndex + 1) || "/";
+                path = path.substring(lastSlashIndex + 1);
+                dirPath = this.getItemFromPath(dirPart);
+            } else {
+                // Handle current directory
+                dirPath = this.getItemFromPath(this.currentPath);
+            }
+            
+            currentDir = dirPath;
+            
+            if (!currentDir || currentDir.type !== "folder") {
+                return [];
+            }
+            
+            // Filter contents based on the path prefix
+            const results = Object.keys(currentDir.contents)
+                .filter(name => name.startsWith(path))
+                .map(name => {
+                    const item = currentDir.contents[name];
+                    return item.type === "folder" ? name + "/" : name;
+                });
+            
+            return results;
+        }
+        
+        return [];
     }
-
-    showSkillCategory(category) {
-        const skillCategories = {
-            '1': `
-            <div class="section">
-                <h3>Lenguajes de Programación</h3>
-                <pre>
-● Python
-● Golang
-● JavaScript
-● TypeScript
-● PHP
-● C / C++
-● Bash Scripting
-                </pre>
-            </div>`,
-            '2': `
-            <div class="section">
-                <h3>Frameworks y Bibliotecas</h3>
-                <pre>
-● Vue3
-● NodeJS
-● Nest
-● Laravel
-● Symfony
-                </pre>
-            </div>`,
-            '3': `
-            <div class="section">
-                <h3>Aplicativos</h3>
-                <pre>
-● Flutter
-● Numpy
-● Spark
-● Scraping
-                </pre>
-            </div>`,
-            '4': `
-            <div class="section">
-                <h3>Bases de Datos</h3>
-                <pre>
-● PostgreSQL
-● MySQL
-● MongoDB
-● MariaDB
-● SQL
-● SQLite
-                </pre>
-            </div>`,
-            '5': `
-            <div class="section">
-                <h3>Herramientas de Desarrollo</h3>
-                <pre>
-● Docker
-● Kubernetes
-● JWT
-● API connection
-● Pandas
-                </pre>
-            </div>`,
-            '6': `
-            <div class="section">
-                <h3>Servidores y Servicios</h3>
-                <pre>
-● AWS
-● Google Cloud
-● Azure
-● Ubuntu
-● Debian
-● Servicios WebSocket, JWT, API Rest
-                </pre>
-            </div>`,
-            '7': `
-            <div class="section">
-                <h3>Otros</h3>
-                <pre>
-● Git
-● Scrum
-● Jira
-● Trabajo en equipo
-● Kanban
-● Colab
-                </pre>
-            </div>`
-        };
-
-        const content = skillCategories[category] || `<p>Categoría no válida. Por favor selecciona un número del 1 al 7.</p>`;
-        this.appendOutput(content);
+    
+    // Autocomplete the command
+    autocomplete() {
+        const suggestions = this.generateAutocompleteSuggestions();
+        
+        if (suggestions.length === 1) {
+            // Only one suggestion, autocomplete it
+            const args = this.command.trim().split(/\s+/);
+            
+            if (args.length === 1 && !this.command.endsWith(" ")) {
+                // Autocomplete command
+                this.command = suggestions[0] + " ";
+                this.cursorPosition = this.command.length;
+            } else if ((args[0] === "cd" || args[0] === "ls" || args[0] === "cat") && args.length <= 2) {
+                // Autocomplete path
+                const commandPart = args[0] + " ";
+                
+                let pathPart = args[1] || "";
+                
+                if (pathPart.includes("/") && !pathPart.startsWith("/")) {
+                    // Handle relative path with subdirectories
+                    const lastSlashIndex = pathPart.lastIndexOf("/");
+                    const dirPart = pathPart.substring(0, lastSlashIndex + 1);
+                    this.command = commandPart + dirPart + suggestions[0];
+                } else if (pathPart.startsWith("/")) {
+                    // Handle absolute path
+                    const lastSlashIndex = pathPart.lastIndexOf("/");
+                    const dirPart = pathPart.substring(0, lastSlashIndex + 1);
+                    this.command = commandPart + dirPart + suggestions[0];
+                } else {
+                    // Simple case
+                    this.command = commandPart + suggestions[0];
+                }
+                
+                this.cursorPosition = this.command.length;
+            }
+            
+            this.showingSuggestions = false;
+            this.tabSuggestions = [];
+        } else if (suggestions.length > 1) {
+            // Multiple suggestions, show them
+            this.tabSuggestions = suggestions;
+            this.showingSuggestions = true;
+            
+            // Find common prefix if double-tab is pressed
+            const now = Date.now();
+            if (now - this.lastTabTime < 500) {
+                // Find the common prefix among all suggestions
+                let commonPrefix = suggestions[0];
+                for (let i = 1; i < suggestions.length; i++) {
+                    let j = 0;
+                    while (j < commonPrefix.length && j < suggestions[i].length && 
+                           commonPrefix[j] === suggestions[i][j]) {
+                        j++;
+                    }
+                    commonPrefix = commonPrefix.substring(0, j);
+                }
+                
+                // If we have a common prefix longer than what's already typed
+                if (commonPrefix.length > 0) {
+                    const args = this.command.trim().split(/\s+/);
+                    
+                    if (args.length === 1 && !this.command.endsWith(" ")) {
+                        // Autocomplete command with common prefix
+                        this.command = commonPrefix;
+                        this.cursorPosition = this.command.length;
+                    } else if ((args[0] === "cd" || args[0] === "ls" || args[0] === "cat") && args.length <= 2) {
+                        // Autocomplete path with common prefix
+                        const commandPart = args[0] + " ";
+                        
+                        let pathPart = args[1] || "";
+                        
+                        if (pathPart.includes("/") && !pathPart.startsWith("/")) {
+                            // Handle relative path with subdirectories
+                            const lastSlashIndex = pathPart.lastIndexOf("/");
+                            const dirPart = pathPart.substring(0, lastSlashIndex + 1);
+                            this.command = commandPart + dirPart + commonPrefix;
+                        } else if (pathPart.startsWith("/")) {
+                            // Handle absolute path
+                            const lastSlashIndex = pathPart.lastIndexOf("/");
+                            const dirPart = pathPart.substring(0, lastSlashIndex + 1);
+                            this.command = commandPart + dirPart + commonPrefix;
+                        } else {
+                            // Simple case
+                            this.command = commandPart + commonPrefix;
+                        }
+                        
+                        this.cursorPosition = this.command.length;
+                    }
+                }
+            }
+            
+            this.lastTabTime = now;
+        }
+        
+        this.drawInterface();
     }
-
-    showProjects() {
-        this.appendOutput(this.translations[this.currentLang].content.projects);
+    
+    // Handle keyboard input
+    handleKeyDown(e) {
+        // Prevent default for arrow keys and other control keys
+        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End", "Tab"].includes(e.key)) {
+            e.preventDefault();
+        }
+        
+        // Hide suggestions when any key other than Tab is pressed
+        if (e.key !== "Tab" && this.showingSuggestions) {
+            this.showingSuggestions = false;
+            this.tabSuggestions = [];
+        }
+        
+        // Handle special keys
+        switch (e.key) {
+            case "Enter":
+                // Process command and clear input
+                this.terminalOutput.push(`visitor@cv:${this.currentPath}$ ${this.command}`);
+                this.processCommand(this.command);
+                this.command = "";
+                this.cursorPosition = 0;
+                break;
+                
+            case "Backspace":
+                // Delete character before cursor
+                if (this.cursorPosition > 0) {
+                    this.command = this.command.substring(0, this.cursorPosition - 1) + this.command.substring(this.cursorPosition);
+                    this.cursorPosition--;
+                }
+                break;
+                
+            case "Delete":
+                // Delete character at cursor
+                if (this.cursorPosition < this.command.length) {
+                    this.command = this.command.substring(0, this.cursorPosition) + this.command.substring(this.cursorPosition + 1);
+                }
+                break;
+                
+            case "ArrowLeft":
+                // Move cursor left
+                if (this.cursorPosition > 0) {
+                    this.cursorPosition--;
+                }
+                break;
+                
+            case "ArrowRight":
+                // Move cursor right
+                if (this.cursorPosition < this.command.length) {
+                    this.cursorPosition++;
+                }
+                break;
+                
+            case "Home":
+                // Move cursor to beginning
+                this.cursorPosition = 0;
+                break;
+                
+            case "End":
+                // Move cursor to end
+                this.cursorPosition = this.command.length;
+                break;
+                
+            case "ArrowUp":
+                // Navigate command history (previous)
+                if (this.commandHistory.length > 0 && this.historyIndex < this.commandHistory.length - 1) {
+                    this.historyIndex++;
+                    this.command = this.commandHistory[this.historyIndex];
+                    this.cursorPosition = this.command.length;
+                }
+                break;
+                
+            case "ArrowDown":
+                // Navigate command history (next)
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                    this.command = this.commandHistory[this.historyIndex];
+                    this.cursorPosition = this.command.length;
+                } else if (this.historyIndex === 0) {
+                    this.historyIndex = -1;
+                    this.command = "";
+                    this.cursorPosition = 0;
+                }
+                break;
+                
+            case "Tab":
+                // Handle autocompletion
+                this.autocomplete();
+                return; // Skip the drawInterface call below as it's handled in autocomplete
+                
+            default:
+                // Add printable characters to command
+                if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                    this.command = this.command.substring(0, this.cursorPosition) + e.key + this.command.substring(this.cursorPosition);
+                    this.cursorPosition++;
+                }
+        }
+        
+        this.drawInterface();
     }
-
-    showContact() {
-        this.appendOutput(this.translations[this.currentLang].content.contact);
+    
+    // Handle mouse scroll for terminal scrolling
+    handleWheel(e) {
+        const visibleLines = this.getVisibleLines();
+        
+        if (e.deltaY < 0) {
+            // Scroll up
+            if (this.scrollOffset > 0) {
+                this.scrollOffset--;
+                this.drawInterface();
+            }
+        } else if (e.deltaY > 0) {
+            // Scroll down
+            if (this.scrollOffset < this.terminalOutput.length - visibleLines) {
+                this.scrollOffset++;
+                this.drawInterface();
+            }
+        }
+        
+        e.preventDefault();
     }
-
-    showLS() {
-        this.appendOutput(this.translations[this.currentLang].content.ls);
-    }
-
-    showMatrix() {
-        const matrix = document.createElement('div');
-        matrix.style.color = '#00ff00';
-        matrix.style.fontFamily = 'monospace';
-        matrix.innerHTML = `
-            <pre>
-1001 0110 1010 1111
-0110 1100 0101 1010
-1111 0000 1111 0000
-            </pre>
-        `;
-        this.output.appendChild(matrix);
-    }
-
-    clearTerminal() {
-        this.output.innerHTML = '';
-    }
-
-    scrollToBottom() {
-        this.output.scrollTop = this.output.scrollHeight;
+    
+    // Handle window resize
+    handleResize() {
+        this.resizeCanvas();
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    new Terminal();
-});

@@ -3,50 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal CV</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css">
+    <title>Angel Gonzales - Interactive CV</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="top-bar">
-        <div class="contact-info">
-            <span>👤 Angel Gonzales</span>
-            <span>📧 jgonzales@peruyoung.com</span>
-            <span>🌐 github.com/hanjelito</span>
-            <span>💼 linkedin.com/in/angel-gonzales-laura</span>
-        </div>
-    </div>
-    <div class="terminal">
-        <div class="terminal-header">
-            <div class="controls">
-                <span class="control close"></span>
-                <span class="control minimize"></span>
-                <span class="control maximize"></span>
-            </div>
-            <div class="title">terminal@cv: ~</div>
-            <div class="header-controls">
-                <button id="themeToggle" class="header-btn">🌙</button>
-                <button id="langToggle" class="header-btn">🌐</button>
-            </div>
-        </div>
-        <div class="terminal-content">
-            <div id="output">
-                <pre class="ascii-art">
- _    _      _                          
-| |  | |    | |                         
-| |  | | ___| | ___ ___  _ __ ___   ___ 
-| |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \
-\  /\  /  __/ | (_| (_) | | | | | |  __/
- \/  \/ \___|_|\___\___/|_| |_| |_|\___|
-                </pre>
-                <p>Welcome to my interactive CV! Type 'help' to see available commands.</p>
-            </div>
-            <div class="input-line">
-                <span class="prompt">visitor@cv:~$</span>
-                <input type="text" id="command-input" autocomplete="off" autofocus>
-            </div>
-        </div>
-    </div>
-    <script type="module" src="./static/js/main.js"></script>
+    <canvas id="terminalCanvas"></canvas>
+    <div class="info">Usa las flechas ↑↓ para navegar el historial de comandos | Tab para autocompletar | Escribe 'help' para ver los comandos disponibles</div>
+    
+    <script type="module" src="static/js/main.js"></script>
 </body>
 </html>

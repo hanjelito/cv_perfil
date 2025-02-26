@@ -1,141 +1,57 @@
+// Translations for the terminal interface
 export const translations = {
     en: {
-        welcome: 'Welcome to my interactive CV! Type \'help\' to see available commands.',
-        commands: {
-            help: 'Display the list of available commands',
-            about: 'Learn more about me',
-            experience: 'View my work experience',
-            education: 'View my education history',
-            contact: 'Get my contact details',
-            projects: 'View my projects',
-            clear: 'Clear the terminal output',
-            pwd: 'Print the current working directory',
-            ls: 'List the contents of the current directory',
-            cd: 'Navigate to a directory. Use "cd .." to go up a level, or "cd" to return to the root',
-            tab: 'Auto-complete directory names while navigating',
-        },
-        content: {
-            about: `
-                <h1>Angel Gonzales</h1>
-                <p><strong>Email:</strong> agonzales@peruyoung.com | <strong>Phone:</strong> (+34) 643 663 002</p>
-                <p><strong>Student 42</strong> juan-gon</p>
-                <p>
-                    <strong>About Me:</strong> Computer and Industrial Engineer with over 20 years of experience in software development
-                    and programming. Skilled in back-end optimization, data-driven decision-making, and creating scalable solutions.
-                    Passionate about adaptability, continuous learning, and thriving in the ever-changing tech landscape.
-                </p>
-            `,
-            experience: `
-                <h2>Professional Experience</h2>
-                <ul>
-                    <li>
-                        <strong>Senior Software Engineer</strong> - Diario de España (Jun 2021 - Present)
-                        <ul>
-                            <li>Developed back-end systems with Laravel PHP and Nest.js</li>
-                            <li>Implemented Docker containers for efficient deployment</li>
-                            <li>Led contract teams to ensure project success</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Senior Software Engineer</strong> - APROS PERU (Jan 2020 - Apr 2021)
-                        <ul>
-                            <li>Designed software architectures for major clients</li>
-                            <li>Created a container management system using Go and Docker</li>
-                            <li>Customized web and mobile apps tailored to client needs</li>
-                        </ul>
-                    </li>
-                </ul>
-            `,
-            education: `
-                <h2>Education</h2>
-                <ul>
-                    <li>Computer Engineering - Universidad Católica San Pablo (2003 - 2007)</li>
-                    <li>Industrial Engineering - Universidad Continental (2016 - 2019)</li>
-                    <li>Low-Level Programming - 42 Network Madrid (2020 - 2023)</li>
-                </ul>
-            `,
-            contact: `
-                <h3>Contact Information</h3>
-                <ul>
-                    <li>Email: agonzales@peruyoung.com</li>
-                    <li>Phone: (+34) 643 663 002</li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/angel-gonzales-laura/" target="_blank">linkedin.com/in/angel-gonzales-laura</a></li>
-                    <li>GitHub: <a href="https://github.com/hanjelito" target="_blank">github.com/hanjelito</a></li>
-                </ul>
-            `,
-            projects: '<p>Showcasing projects I have worked on, including links and descriptions.</p>',
-            ls: '<p>Available sections: about, experience, education, skills (as a directory), contact, projects.</p>',
-        },
+        welcome: "Welcome to Angel Gonzales' interactive CV! Type 'help' to see available commands.",
+        help: [
+            "Available commands:",
+            " - ls: List directory contents",
+            " - cd [dir]: Change directory (cd .. to go up, cd / to go to root)",
+            " - cat [file]: Display file contents",
+            " - clear: Clear the terminal",
+            " - theme: Toggle light/dark theme",
+            " - lang: Switch language (es/en)",
+            " - about: Display information about me",
+            " - experience: Show my professional experience",
+            " - education: Show my education history",
+            " - projects: Show my projects",
+            " - skills: Show my technical skills",
+        ],
+        about: "Angel Gonzales is a software developer with expertise in web and system design.",
+        experience: "Experience: Developer at XYZ Corp, Freelancer, Open Source Contributor.",
+        education: "Education: B.Sc. in Computer Science, Tech University.",
+        projects: "Projects: Portfolio website, E-commerce system, Real-time chat app.",
+        skills: "Skills: JavaScript, Python, PHP, Vue.js, Laravel, Node.js, MySQL, PostgreSQL.",
+        unknown: "Unknown command:",
+        notFound: "File or directory not found:",
+        notFile: "Not a file:",
+        notDirectory: "Not a directory:",
+        suggestions: "Suggestions:",
     },
     es: {
-        welcome: '¡Bienvenido a mi CV interactivo! Escribe \'help\' para ver los comandos disponibles.',
-        commands: {
-            help: 'Muestra la lista de comandos disponibles',
-            about: 'Más información sobre mí',
-            experience: 'Ver mi experiencia laboral',
-            education: 'Ver mi historial educativo',
-            contact: 'Obtener mis datos de contacto',
-            projects: 'Ver mis proyectos',
-            clear: 'Limpiar la salida del terminal',
-            pwd: 'Muestra el directorio de trabajo actual',
-            ls: 'Lista el contenido del directorio actual',
-            cd: 'Navegar a un directorio. Usa "cd .." para subir un nivel, o "cd" para volver a la raíz',
-        },
-        content: {
-            about: `
-                <h2>Sobre Mí</h2>
-                <p>
-                    Soy Ingeniero Informático e Industrial con más de 20 años de experiencia en desarrollo de sistemas y programación. 
-                    A lo largo de mi carrera, he liderado una variedad de proyectos, desde la creación de páginas web hasta la 
-                    implementación de sistemas integrales para aerolíneas. Mi enfoque principal es el análisis de datos para 
-                    la toma de decisiones informadas.
-                </p>
-                <p>
-                    Creo firmemente en la adaptabilidad y el aprendizaje constante en el siempre cambiante mundo de la tecnología. 
-                    Sobreviví al COVID-19 en 2021 tras pasar dos meses en el hospital, incluyendo tres semanas en coma. 
-                    Esta experiencia reforzó mi resiliencia y mi convicción de que lo que no te mata, te hace más fuerte.
-                </p>
-            `,
-            experience: `
-                <h2>Experiencia Profesional</h2>
-                <ul>
-                    <li>
-                        <strong>Ingeniero Senior de Desarrollo de Software</strong> - Diario de España (Jun 2021 - Presente)
-                        <ul>
-                            <li>Desarrollé sistemas back-end con Laravel PHP y Nest.js</li>
-                            <li>Implementé contenedores Docker para despliegues eficientes</li>
-                            <li>Lideré equipos contratados para garantizar el éxito del proyecto</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Ingeniero Senior de Software</strong> - APROS PERU (Ene 2020 - Abr 2021)
-                        <ul>
-                            <li>Diseñé arquitecturas de software para clientes importantes</li>
-                            <li>Creé un sistema de gestión de contenedores con Go y Docker</li>
-                            <li>Desarrollé aplicaciones web y móviles personalizadas</li>
-                        </ul>
-                    </li>
-                </ul>
-            `,
-            education: `
-                <h2>Educación</h2>
-                <ul>
-                    <li>Ingeniería Informática - Universidad Católica San Pablo (2003 - 2007)</li>
-                    <li>Ingeniería Industrial - Universidad Continental (2016 - 2019)</li>
-                    <li>Programación de Bajo Nivel - 42 Network Madrid (2020 - 2023)</li>
-                </ul>
-            `,
-            contact: `
-                <h3>Información de Contacto</h3>
-                <ul>
-                    <li>Email: agonzales@peruyoung.com</li>
-                    <li>Teléfono: (+34) 643 663 002</li>
-                    <li>LinkedIn: <a href="https://www.linkedin.com/in/angel-gonzales-laura/" target="_blank">linkedin.com/in/angel-gonzales-laura</a></li>
-                    <li>GitHub: <a href="https://github.com/hanjelito" target="_blank">github.com/hanjelito</a></li>
-                </ul>
-            `,
-            projects: '<p>Proyectos en los que he trabajado, incluyendo enlaces y descripciones.</p>',
-            ls: '<p>Secciones disponibles: about, experience, education, skills (como directorio), contact, projects.</p>',
-        },
-    },
+        welcome: "¡Bienvenido al CV interactivo de Angel Gonzales! Escribe 'help' para ver los comandos disponibles.",
+        help: [
+            "Comandos disponibles:",
+            " - ls: Listar contenido del directorio",
+            " - cd [dir]: Cambiar directorio (cd .. para subir, cd / para ir a la raíz)",
+            " - cat [file]: Mostrar contenido del archivo",
+            " - clear: Limpiar el terminal",
+            " - theme: Cambiar entre tema claro/oscuro",
+            " - lang: Cambiar idioma (es/en)",
+            " - about: Mostrar información sobre mí",
+            " - experience: Mostrar mi experiencia profesional",
+            " - education: Mostrar mi historial educativo",
+            " - projects: Mostrar mis proyectos",
+            " - skills: Mostrar mis habilidades técnicas",
+        ],
+        about: "Angel Gonzales es un desarrollador de software con experiencia en diseño web y de sistemas.",
+        experience: "Experiencia: Desarrollador en XYZ Corp, Freelancer, Colaborador de código abierto.",
+        education: "Educación: Licenciatura en Ciencias de la Computación, Universidad Técnica.",
+        projects: "Proyectos: Sitio web de portafolio, Sistema de comercio electrónico, App de chat en tiempo real.",
+        skills: "Habilidades: JavaScript, Python, PHP, Vue.js, Laravel, Node.js, MySQL, PostgreSQL.",
+        unknown: "Comando desconocido:",
+        notFound: "Archivo o directorio no encontrado:",
+        notFile: "No es un archivo:",
+        notDirectory: "No es un directorio:",
+        suggestions: "Sugerencias:",
+    }
 };
