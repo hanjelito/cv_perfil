@@ -1,4 +1,58 @@
 // Directory structure representing skills and experience
+import { skillsData } from './skills-data.js';
+
+// Función para generar automáticamente la estructura de directorios de habilidades
+function generateSkillsStructure() {
+    const skillsDir = {
+        type: "folder",
+        contents: {}
+    };
+    
+    // Crear carpetas para cada categoría
+    skillsData.categories.forEach(category => {
+        const categoryDir = {
+            type: "folder",
+            contents: {}
+        };
+        
+        // Crear archivos para cada habilidad
+        category.skills.forEach(skill => {
+            categoryDir.contents[`${skill.name.toLowerCase()}.txt`] = {
+                type: "file",
+                content: generateSkillContent(skill)
+            };
+        });
+        
+        // Añadir la carpeta de categoría al directorio de habilidades
+        skillsDir.contents[category.id] = categoryDir;
+    });
+    
+    return skillsDir;
+}
+
+// Generar contenido detallado para cada archivo de habilidad
+function generateSkillContent(skill) {
+    return `${skill.name}
+${'-'.repeat(skill.name.length)}
+
+Level: ${'★'.repeat(skill.level)}${'☆'.repeat(5 - skill.level)}
+
+Description:
+This file contains detailed information about my experience with ${skill.name}.
+Here you would find projects I've worked on, specific techniques I've mastered,
+and how I've applied this skill in real-world scenarios.
+
+Projects using ${skill.name}:
+- Project 1: Description of implementation
+- Project 2: Another example of how I used this skill
+- Project 3: Additional relevant work
+
+Related skills:
+- Related skill 1
+- Related skill 2
+- Related skill 3`;
+}
+
 export const directoryStructure = {
     "/": {
         type: "folder",
@@ -11,74 +65,7 @@ export const directoryStructure = {
                 type: "file",
                 content: "# Angel Gonzales\n\nEmail: jgonzales@peruyoung.com\nGitHub: github.com/hanjelito\nLinkedIn: linkedin.com/in/angel-gonzales-laura\n\n## Professional Summary\nSoftware developer with expertise in web development and system design."
             },
-            "skills": {
-                type: "folder",
-                contents: {
-                    "programming_languages": {
-                        type: "folder",
-                        contents: {
-                            "python.txt": { 
-                                type: "file", 
-                                content: "Python: Advanced level. Experience with Django, Flask, Data Analysis." 
-                            },
-                            "javascript.txt": { 
-                                type: "file", 
-                                content: "JavaScript: Expert level. Proficient in modern ES6+, async patterns, and frameworks." 
-                            },
-                            "typescript.txt": { 
-                                type: "file", 
-                                content: "TypeScript: Intermediate level. Used in frontend and backend projects." 
-                            },
-                            "golang.txt": { 
-                                type: "file", 
-                                content: "Go: Intermediate level. Used for microservices and backend development." 
-                            },
-                            "php.txt": { 
-                                type: "file", 
-                                content: "PHP: Advanced level. Experience with Laravel and Symfony frameworks." 
-                            }
-                        }
-                    },
-                    "frameworks": {
-                        type: "folder",
-                        contents: {
-                            "vue.txt": { 
-                                type: "file", 
-                                content: "Vue.js: Expert level. Built multiple production applications." 
-                            },
-                            "laravel.txt": { 
-                                type: "file", 
-                                content: "Laravel: Advanced level. Developed e-commerce and CMS solutions." 
-                            },
-                            "node.txt": { 
-                                type: "file", 
-                                content: "Node.js: Advanced level. Created RESTful APIs and real-time applications." 
-                            },
-                            "nest.txt": { 
-                                type: "file", 
-                                content: "NestJS: Intermediate level. Used for scalable backend applications." 
-                            }
-                        }
-                    },
-                    "databases": {
-                        type: "folder",
-                        contents: {
-                            "mysql.txt": { 
-                                type: "file", 
-                                content: "MySQL: Advanced level. Database design, optimization, and administration." 
-                            },
-                            "postgresql.txt": { 
-                                type: "file", 
-                                content: "PostgreSQL: Advanced level. Complex queries and performance tuning." 
-                            },
-                            "mongodb.txt": { 
-                                type: "file", 
-                                content: "MongoDB: Intermediate level. NoSQL database for document storage." 
-                            }
-                        }
-                    }
-                }
-            },
+            "skills": generateSkillsStructure(),
             "experience": {
                 type: "folder",
                 contents: {

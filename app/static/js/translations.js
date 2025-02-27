@@ -1,7 +1,30 @@
 // Translations for the terminal interface
+import { SkillsGenerator } from './terminal/skills-generator.js';
+
+// Crear instancia del generador de habilidades
+const skillsGenerator = new SkillsGenerator();
+
 export const translations = {
     en: {
-        welcome: "Welcome to Angel Gonzales' interactive CV! Type 'help' to see available commands.",
+        welcome: [
+            "",
+            "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
+            "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝",
+            "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  ",
+            "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ",
+            "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗",
+            " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝",
+            "                                                              ",
+            "        ╔═╗╔╗╔╔═╗╔═╗╦    ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗             ",
+            "        ╠═╣║║║║ ╦║╣ ║    ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗             ",
+            "        ╩ ╩╝╚╝╚═╝╚═╝╩═╝  ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝             ",
+            "                                                              ",
+            "         ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╦  ╦╔═╗  ╔═╗╦  ╦              ",
+            "         ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║╚╗╔╝║╣   ║  ╚╗╔╝              ",
+            "         ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩ ╚╝ ╚═╝  ╚═╝ ╚╝               ",
+            "                                                              ",
+            "Type 'help' to see available commands."
+        ],
         help: [
             "Available commands:",
             " - ls: List directory contents",
@@ -20,7 +43,8 @@ export const translations = {
         experience: "Experience: Developer at XYZ Corp, Freelancer, Open Source Contributor.",
         education: "Education: B.Sc. in Computer Science, Tech University.",
         projects: "Projects: Portfolio website, E-commerce system, Real-time chat app.",
-        skills: "Skills: JavaScript, Python, PHP, Vue.js, Laravel, Node.js, MySQL, PostgreSQL.",
+        // Generación dinámica de habilidades
+        skills: skillsGenerator.generateSkillsAscii('en'),
         unknown: "Unknown command:",
         notFound: "File or directory not found:",
         notFile: "Not a file:",
@@ -28,7 +52,25 @@ export const translations = {
         suggestions: "Suggestions:",
     },
     es: {
-        welcome: "¡Bienvenido al CV interactivo de Angel Gonzales! Escribe 'help' para ver los comandos disponibles.",
+        welcome: [
+            "",
+            "██████╗ ██╗███████╗███╗   ██╗██╗   ██╗███████╗███╗   ██╗██╗██████╗  ██████╗ ",
+            "██╔══██╗██║██╔════╝████╗  ██║██║   ██║██╔════╝████╗  ██║██║██╔══██╗██╔═══██╗",
+            "██████╔╝██║█████╗  ██╔██╗ ██║██║   ██║█████╗  ██╔██╗ ██║██║██║  ██║██║   ██║",
+            "██╔══██╗██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║██║  ██║██║   ██║",
+            "██████╔╝██║███████╗██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║██║██████╔╝╚██████╔╝",
+            "╚═════╝ ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝╚═╝╚═════╝  ╚═════╝ ",
+            "                                                                             ",
+            "            ╔═╗╦    ╔═╗╦  ╦  ╔╦╗╔═╗  ╔═╗╔╗╔╔═╗╔═╗╦                          ",
+            "            ╠═╣║    ║  ╚╗╔╝   ║║║╣   ╠═╣║║║║ ╦║╣ ║                          ",
+            "            ╩ ╩╩═╝  ╚═╝ ╚╝   ═╩╝╚═╝  ╩ ╩╝╚╝╚═╝╚═╝╩═╝                        ",
+            "                                                                             ",
+            "            ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗                                        ",
+            "            ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗                                        ",
+            "            ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝                                        ",
+            "                                                                             ",
+            "Escribe 'help' para ver los comandos disponibles."
+        ],
         help: [
             "Comandos disponibles:",
             " - ls: Listar contenido del directorio",
@@ -47,7 +89,8 @@ export const translations = {
         experience: "Experiencia: Desarrollador en XYZ Corp, Freelancer, Colaborador de código abierto.",
         education: "Educación: Licenciatura en Ciencias de la Computación, Universidad Técnica.",
         projects: "Proyectos: Sitio web de portafolio, Sistema de comercio electrónico, App de chat en tiempo real.",
-        skills: "Habilidades: JavaScript, Python, PHP, Vue.js, Laravel, Node.js, MySQL, PostgreSQL.",
+        // Generación dinámica de habilidades en español
+        skills: skillsGenerator.generateSkillsAscii('es'),
         unknown: "Comando desconocido:",
         notFound: "Archivo o directorio no encontrado:",
         notFile: "No es un archivo:",

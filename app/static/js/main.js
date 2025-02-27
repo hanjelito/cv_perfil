@@ -1,10 +1,10 @@
 import { directoryStructure } from './structure.js';
 import { translations } from './translations.js';
-import { Terminal } from './terminal.js';
+import { Terminal } from './terminal/index.js';
 
-// Initialize the terminal with the canvas element
+// Inicializar el terminal con el elemento canvas
 const canvas = document.getElementById("terminalCanvas");
 const terminal = new Terminal(canvas, directoryStructure, translations);
 
-// Start the terminal
+// Iniciar el terminal
 terminal.init();
