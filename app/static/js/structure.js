@@ -132,6 +132,20 @@ ${project.description.en}`
     return projectsDir;
 }
 
+// Generar contenido del archivo about.txt con soporte para arrays o strings
+function generateAboutContent(profile) {
+    // Si el resumen (summary) es un array, unir con saltos de línea
+    let enContent;
+    if (Array.isArray(profile.summary.en)) {
+        enContent = profile.summary.en.join('\n');
+    } else {
+        enContent = profile.summary.en;
+    }
+    
+    // Devolver el contenido formateado
+    return enContent;
+}
+
 // Generar la estructura completa de directorios
 export const directoryStructure = {
     "/": {
@@ -139,11 +153,11 @@ export const directoryStructure = {
         contents: {
             "about.txt": { 
                 type: "file",
-                content: appData.profile.summary.en
+                content: generateAboutContent(appData.profile)
             },
             "resume.md": { 
                 type: "file",
-                content: `# ${appData.profile.name}\n\nEmail: ${appData.profile.email}\nGitHub: ${appData.profile.github}\nLinkedIn: ${appData.profile.linkedin}\n\n## Professional Summary\n${appData.profile.summary.en}`
+                content: `# ${appData.profile.name}\n\nEmail: ${appData.profile.email}\nGitHub: ${appData.profile.github}\nLinkedIn: ${appData.profile.linkedin}\n\n## Professional Summary\n${Array.isArray(appData.profile.summary.en) ? appData.profile.summary.en.join('\n\n') : appData.profile.summary.en}`
             },
             "skills": generateSkillsStructure(),
             "experience": generateExperienceStructure(),

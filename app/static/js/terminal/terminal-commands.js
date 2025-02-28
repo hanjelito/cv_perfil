@@ -19,19 +19,23 @@ export class TerminalCommands {
                 break;
                 
             case "about":
-                terminal.terminalOutput.push(terminal.translations[terminal.lang].about);
+                // Manejar texto con múltiples líneas
+                this.handleMultilineOutput(terminal.translations[terminal.lang].about);
                 break;
                 
             case "experience":
-                terminal.terminalOutput.push(terminal.translations[terminal.lang].experience);
+                // Manejar texto con múltiples líneas
+                this.handleMultilineOutput(terminal.translations[terminal.lang].experience);
                 break;
                 
             case "education":
-                terminal.terminalOutput.push(terminal.translations[terminal.lang].education);
+                // Manejar texto con múltiples líneas
+                this.handleMultilineOutput(terminal.translations[terminal.lang].education);
                 break;
                 
             case "projects":
-                terminal.terminalOutput.push(terminal.translations[terminal.lang].projects);
+                // Manejar texto con múltiples líneas
+                this.handleMultilineOutput(terminal.translations[terminal.lang].projects);
                 break;
                 
             case "skills":
@@ -71,6 +75,22 @@ export class TerminalCommands {
         }
         
         terminal.updateScroll(true);
+    }
+    
+    // Manejar texto que puede contener múltiples líneas
+    handleMultilineOutput(text) {
+        const terminal = this.terminal;
+        
+        // Si el texto contiene saltos de línea, dividirlo y añadir cada línea
+        if (text.includes('\n')) {
+            const lines = text.split('\n');
+            for (const line of lines) {
+                terminal.terminalOutput.push(line);
+            }
+        } else {
+            // Si es una sola línea, añadirla directamente
+            terminal.terminalOutput.push(text);
+        }
     }
     
     // Alternar entre temas claro y oscuro

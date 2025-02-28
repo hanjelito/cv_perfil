@@ -3,13 +3,17 @@
 export const appData = {
   // Información básica del perfil
   profile: {
-    name: "Angel Gonzales",
-    email: "jgonzales@peruyoung.com",
+    name: "Juan Angel Gonzales Laura",
+    email: "agonzales@peruyoung.com",
     github: "github.com/hanjelito",
     linkedin: "linkedin.com/in/angel-gonzales-laura",
     summary: {
-      en: "Angel Gonzales is a software developer with expertise in web and system design.",
-      es: "Angel Gonzales es un desarrollador de software con experiencia en diseño web y de sistemas."
+      en: [
+        "Computer and Industrial Engineer with over 20 years of experience in systems development and programming.",
+        "I've led a variety of projects, from website creation to implementing comprehensive systems for airlines,",
+        "with a special focus on data analysis for informed decision-making.",
+        "I firmly believe in the importance of adaptability and continuous learning in the ever-changing world of technology."],
+      es: "Ingeniero Informático e Industrial con más de 20 años de experiencia en desarrollo de sistemas y programación. He dirigido una variedad de proyectos, desde la creación de páginas web hasta la implementación de sistemas integrales para aerolíneas, con un enfoque especial en el análisis de datos para la toma de decisiones informadas. Creo firmemente en la importancia de la adaptabilidad y el aprendizaje constante en el siempre cambiante mundo de la tecnología."
     }
   },
   
@@ -692,21 +696,17 @@ export const appData = {
     en: {
       welcome: [
         "",
-        "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
-        "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝",
-        "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  ",
-        "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ",
-        "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗",
-        " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝",
+        "██╗  ██╗██████╗ ███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗",
+        "██║  ██║╚════██╗████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝",
+        "███████║ █████╔╝██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ",
+        "╚════██║██╔═══╝ ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ",
+        "     ██║███████╗██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗",
+        "     ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝",
         "                                                              ",
-        "        ╔═╗╔╗╔╔═╗╔═╗╦    ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗             ",
-        "        ╠═╣║║║║ ╦║╣ ║    ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗             ",
-        "        ╩ ╩╝╚╝╚═╝╚═╝╩═╝  ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝             ",
-        "                                                              ",
-        "         ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╦  ╦╔═╗  ╔═╗╦  ╦              ",
-        "         ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║╚╗╔╝║╣   ║  ╚╗╔╝              ",
-        "         ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩ ╚╝ ╚═╝  ╚═╝ ╚╝               ",
-        "                                                              ",
+        "          ╦╦ ╦╔═╗╔╗╔ ╔═╗╔═╗╔╗╔    ",
+        "          ║║ ║╠═╣║║║═║ ╦║ ║║║║    ",
+        "         ╚╝╚═╝╩ ╩╝╚╝ ╚═╝╚═╝╝╚╝    ",
+        "                                  ",
         "Type 'help' to see available commands."
       ],
       help: [
@@ -732,21 +732,17 @@ export const appData = {
     es: {
       welcome: [
         "",
-        "██████╗ ██╗███████╗███╗   ██╗██╗   ██╗███████╗███╗   ██╗██╗██████╗  ██████╗ ",
-        "██╔══██╗██║██╔════╝████╗  ██║██║   ██║██╔════╝████╗  ██║██║██╔══██╗██╔═══██╗",
-        "██████╔╝██║█████╗  ██╔██╗ ██║██║   ██║█████╗  ██╔██╗ ██║██║██║  ██║██║   ██║",
-        "██╔══██╗██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║██║  ██║██║   ██║",
-        "██████╔╝██║███████╗██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║██║██████╔╝╚██████╔╝",
-        "╚═════╝ ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝╚═╝╚═════╝  ╚═════╝ ",
-        "                                                                             ",
-        "            ╔═╗╦    ╔═╗╦  ╦  ╔╦╗╔═╗  ╔═╗╔╗╔╔═╗╔═╗╦                          ",
-        "            ╠═╣║    ║  ╚╗╔╝   ║║║╣   ╠═╣║║║║ ╦║╣ ║                          ",
-        "            ╩ ╩╩═╝  ╚═╝ ╚╝   ═╩╝╚═╝  ╩ ╩╝╚╝╚═╝╚═╝╩═╝                        ",
-        "                                                                             ",
-        "            ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗                                        ",
-        "            ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗                                        ",
-        "            ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝                                        ",
-        "                                                                             ",
+        "██╗  ██╗██████╗ ███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗",
+        "██║  ██║╚════██╗████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝",
+        "███████║ █████╔╝██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ",
+        "╚════██║██╔═══╝ ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ",
+        "     ██║███████╗██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗",
+        "     ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝",
+        "                                                                               ",
+        "          ╦╦ ╦╔═╗╔╗╔ ╔═╗╔═╗╔╗╔    ",
+        "          ║║ ║╠═╣║║║═║ ╦║ ║║║║    ",
+        "         ╚╝╚═╝╩ ╩╝╚╝ ╚═╝╚═╝╝╚╝    ",
+        "                                  ",
         "Escribe 'help' para ver los comandos disponibles."
       ],
       help: [

@@ -143,7 +143,7 @@ export class TerminalRenderer {
         
         // Dibujar prompt del comando
         terminal.ctx.fillStyle = promptColor;
-        const promptText = `visitor@cv:${terminal.currentPath}$ `;
+        const promptText = `visitor@juan-gon:${terminal.currentPath}$ `;
         const promptWidth = terminal.ctx.measureText(promptText).width;
         terminal.ctx.fillText(promptText, 20, y);
         

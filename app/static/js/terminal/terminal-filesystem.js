@@ -141,7 +141,12 @@ export class TerminalFileSystem {
         }
         
         // Dividir contenido en líneas y añadir a la salida del terminal
+        // Aseguramos que cada línea sea tratada como una entrada separada
         const lines = item.content.split("\n");
-        terminal.terminalOutput.push(...lines);
+        
+        // Añadir cada línea individualmente a la salida del terminal
+        for (const line of lines) {
+            terminal.terminalOutput.push(line);
+        }
     }
 }
