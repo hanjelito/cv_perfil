@@ -1,100 +1,32 @@
-// Translations for the terminal interface
+// translations.js - Refactorizado para usar el sistema centralizado
+import { appData } from './data.js';
 import { SkillsGenerator } from './terminal/skills-generator.js';
 
-// Crear instancia del generador de habilidades
+// Crear instancia del generador de habilidades 
 const skillsGenerator = new SkillsGenerator();
 
-export const translations = {
+// Función para generar las traducciones completas a partir de los datos centralizados
+function generateTranslations() {
+  const translations = {
     en: {
-        welcome: [
-            "",
-            "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗",
-            "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝",
-            "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  ",
-            "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  ",
-            "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗",
-            " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝",
-            "                                                              ",
-            "        ╔═╗╔╗╔╔═╗╔═╗╦    ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗             ",
-            "        ╠═╣║║║║ ╦║╣ ║    ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗             ",
-            "        ╩ ╩╝╚╝╚═╝╚═╝╩═╝  ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝             ",
-            "                                                              ",
-            "         ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╦  ╦╔═╗  ╔═╗╦  ╦              ",
-            "         ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║╚╗╔╝║╣   ║  ╚╗╔╝              ",
-            "         ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩ ╚╝ ╚═╝  ╚═╝ ╚╝               ",
-            "                                                              ",
-            "Type 'help' to see available commands."
-        ],
-        help: [
-            "Available commands:",
-            " - ls: List directory contents",
-            " - cd [dir]: Change directory (cd .. to go up, cd / to go to root)",
-            " - cat [file]: Display file contents",
-            " - clear: Clear the terminal",
-            " - theme: Toggle light/dark theme",
-            " - lang: Switch language (es/en)",
-            " - about: Display information about me",
-            " - experience: Show my professional experience",
-            " - education: Show my education history",
-            " - projects: Show my projects",
-            " - skills: Show my technical skills",
-        ],
-        about: "Angel Gonzales is a software developer with expertise in web and system design.",
-        experience: "Experience: Developer at XYZ Corp, Freelancer, Open Source Contributor.",
-        education: "Education: B.Sc. in Computer Science, Tech University.",
-        projects: "Projects: Portfolio website, E-commerce system, Real-time chat app.",
-        // Generación dinámica de habilidades
-        skills: skillsGenerator.generateSkillsAscii('en'),
-        unknown: "Unknown command:",
-        notFound: "File or directory not found:",
-        notFile: "Not a file:",
-        notDirectory: "Not a directory:",
-        suggestions: "Suggestions:",
+      ...appData.ui.en,
+      about: appData.profile.summary.en,
+      experience: `Experience: ${appData.experience.map(exp => `${exp.title.en} at ${exp.company}`).join(', ')}.`,
+      education: `Education: ${appData.education.university.degree.en}, ${appData.education.university.name}.`,
+      projects: `Projects: ${appData.projects.map(proj => proj.name.en).join(', ')}.`,
+      skills: skillsGenerator.generateSkillsAscii('en')
     },
     es: {
-        welcome: [
-            "",
-            "██████╗ ██╗███████╗███╗   ██╗██╗   ██╗███████╗███╗   ██╗██╗██████╗  ██████╗ ",
-            "██╔══██╗██║██╔════╝████╗  ██║██║   ██║██╔════╝████╗  ██║██║██╔══██╗██╔═══██╗",
-            "██████╔╝██║█████╗  ██╔██╗ ██║██║   ██║█████╗  ██╔██╗ ██║██║██║  ██║██║   ██║",
-            "██╔══██╗██║██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║██║  ██║██║   ██║",
-            "██████╔╝██║███████╗██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║██║██████╔╝╚██████╔╝",
-            "╚═════╝ ╚═╝╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝╚═╝╚═════╝  ╚═════╝ ",
-            "                                                                             ",
-            "            ╔═╗╦    ╔═╗╦  ╦  ╔╦╗╔═╗  ╔═╗╔╗╔╔═╗╔═╗╦                          ",
-            "            ╠═╣║    ║  ╚╗╔╝   ║║║╣   ╠═╣║║║║ ╦║╣ ║                          ",
-            "            ╩ ╩╩═╝  ╚═╝ ╚╝   ═╩╝╚═╝  ╩ ╩╝╚╝╚═╝╚═╝╩═╝                        ",
-            "                                                                             ",
-            "            ╔═╗╔═╗╔╗╔╔═╗╔═╗╦  ╔═╗╔═╗                                        ",
-            "            ║ ╦║ ║║║║╔═╝╠═╣║  ║╣ ╚═╗                                        ",
-            "            ╚═╝╚═╝╝╚╝╚═╝╩ ╩╩═╝╚═╝╚═╝                                        ",
-            "                                                                             ",
-            "Escribe 'help' para ver los comandos disponibles."
-        ],
-        help: [
-            "Comandos disponibles:",
-            " - ls: Listar contenido del directorio",
-            " - cd [dir]: Cambiar directorio (cd .. para subir, cd / para ir a la raíz)",
-            " - cat [file]: Mostrar contenido del archivo",
-            " - clear: Limpiar el terminal",
-            " - theme: Cambiar entre tema claro/oscuro",
-            " - lang: Cambiar idioma (es/en)",
-            " - about: Mostrar información sobre mí",
-            " - experience: Mostrar mi experiencia profesional",
-            " - education: Mostrar mi historial educativo",
-            " - projects: Mostrar mis proyectos",
-            " - skills: Mostrar mis habilidades técnicas",
-        ],
-        about: "Angel Gonzales es un desarrollador de software con experiencia en diseño web y de sistemas.",
-        experience: "Experiencia: Desarrollador en XYZ Corp, Freelancer, Colaborador de código abierto.",
-        education: "Educación: Licenciatura en Ciencias de la Computación, Universidad Técnica.",
-        projects: "Proyectos: Sitio web de portafolio, Sistema de comercio electrónico, App de chat en tiempo real.",
-        // Generación dinámica de habilidades en español
-        skills: skillsGenerator.generateSkillsAscii('es'),
-        unknown: "Comando desconocido:",
-        notFound: "Archivo o directorio no encontrado:",
-        notFile: "No es un archivo:",
-        notDirectory: "No es un directorio:",
-        suggestions: "Sugerencias:",
+      ...appData.ui.es,
+      about: appData.profile.summary.es,
+      experience: `Experiencia: ${appData.experience.map(exp => `${exp.title.es} en ${exp.company}`).join(', ')}.`,
+      education: `Educación: ${appData.education.university.degree.es}, ${appData.education.university.name}.`,
+      projects: `Proyectos: ${appData.projects.map(proj => proj.name.es).join(', ')}.`,
+      skills: skillsGenerator.generateSkillsAscii('es')
     }
-};
+  };
+  
+  return translations;
+}
+
+export const translations = generateTranslations();

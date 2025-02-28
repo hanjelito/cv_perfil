@@ -1,5 +1,5 @@
-// Generador dinámico de visualización de habilidades con formato exacto
-import { skillsData } from '../skills-data.js';
+// skills-generator.js - Generador refactorizado para usar datos centralizados
+import { appData } from '../data.js';
 
 export class SkillsGenerator {
     constructor() {
@@ -11,7 +11,7 @@ export class SkillsGenerator {
         const result = [];
         
         // No incluir título principal, empezar directamente con las categorías
-        skillsData.categories.forEach(category => {
+        appData.skills.categories.forEach(category => {
             // Título de categoría con formato simple
             const categoryTitle = category.translations[lang];
             result.push("");
