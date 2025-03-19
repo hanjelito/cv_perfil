@@ -96,19 +96,26 @@ ${exp.responsibilities.en.map(resp => `- ${resp}`).join('\n')}`
 function generateEducationStructure() {
     const educationDir = {
         type: "folder",
-        contents: {
-            "university.txt": { 
-                type: "file", 
-                content: `${appData.education.university.name} (${appData.education.university.period})
-${appData.education.university.degree.en}
-${appData.education.university.details.en.map(detail => `- ${detail}`).join('\n')}`
-            },
-            "certifications.txt": { 
-                type: "file", 
-                content: `Professional Certifications:
+        contents: {}
+    };
+    
+    // Crear archivo para cada universidad
+    appData.education.universities.forEach(uni => {
+        const fileName = uni.name.toLowerCase().replace(/\s+/g, '_') + '.txt';
+        
+        educationDir.contents[fileName] = {
+            type: "file",
+            content: `${uni.name} (${uni.period})
+${uni.degree.en}
+${uni.location}`
+        };
+    });
+    
+    // Archivo para certificaciones
+    educationDir.contents["certifications.txt"] = { 
+        type: "file", 
+        content: `Professional Certifications:
 ${appData.education.certifications.en.map(cert => `- ${cert}`).join('\n')}`
-            }
-        }
     };
     
     return educationDir;

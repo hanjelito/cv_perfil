@@ -22,7 +22,8 @@ export class SkillsGenerator {
             
             // Procesar cada habilidad con alineación más precisa
             category.skills.forEach(skill => {
-                const levelLabel = skill.translations[lang];
+                // Obtenemos la etiqueta del nivel (Expert, Advanced, Intermediate, etc.)
+                const levelLabel = skill.translations?.[lang] || "";
                 const progressBar = this._generateProgressBar(skill.level);
                 // Alineación específica para cada parte
                 result.push(skill.name.padEnd(12) + progressBar + " " + levelLabel.padEnd(12));

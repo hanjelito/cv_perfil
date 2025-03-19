@@ -5,15 +5,18 @@ export const appData = {
   profile: {
     name: "Juan Angel Gonzales Laura",
     email: "agonzales@peruyoung.com",
+    phone: "(+34) 643 663 002",
     github: "github.com/hanjelito",
     linkedin: "linkedin.com/in/angel-gonzales-laura",
+    nationality: "Peruana",
     summary: {
       en: [
-        "Computer and Industrial Engineer with over 20 years of experience in systems development and programming.",
-        "I've led a variety of projects, from website creation to implementing comprehensive systems for airlines,",
-        "with a special focus on data analysis for informed decision-making.",
-        "I firmly believe in the importance of adaptability and continuous learning in the ever-changing world of technology."],
-      es: "Ingeniero Informático e Industrial con más de 20 años de experiencia en desarrollo de sistemas y programación. He dirigido una variedad de proyectos, desde la creación de páginas web hasta la implementación de sistemas integrales para aerolíneas, con un enfoque especial en el análisis de datos para la toma de decisiones informadas. Creo firmemente en la importancia de la adaptabilidad y el aprendizaje constante en el siempre cambiante mundo de la tecnología."
+        "Computer and Industrial Engineer with extensive experience in developing and implementing advanced technological solutions,",
+        "including back-end systems, automation, agent integration, and n8n workflows.",
+        "Specialized in data analysis for strategic decision-making, technical team management,",
+        "and agile adaptation to new technologies."
+      ],
+      es: "Ingeniero Informático e Industrial con amplia experiencia en el desarrollo e implementación de soluciones tecnológicas avanzadas, incluyendo sistemas back-end, automatización, integración de agentes y workflows con n8n. Especializado en análisis de datos para decisiones estratégicas, gestión de equipos técnicos y adaptación ágil a nuevas tecnologías."
     }
   },
   
@@ -28,169 +31,268 @@ export const appData = {
         },
         skills: [
           { 
-            name: "JavaScript", 
+            name: "Python", 
             level: 1, 
             translations: { en: "Expert", es: "Experto" },
             description: {
-              en: "I have 8+ years of experience with JavaScript for both frontend and backend development. Proficient in modern ES6+ features and JavaScript ecosystem.",
-              es: "Tengo más de 8 años de experiencia con JavaScript tanto para desarrollo frontend como backend. Dominio de características modernas de ES6+ y del ecosistema JavaScript."
+              en: "8+ years working with Python for backend services, web scraping, data processing, and automation. Experience with Selenium and various Python frameworks.",
+              es: "Más de 8 años trabajando con Python para servicios backend, web scraping, procesamiento de datos y automatización. Experiencia con Selenium y varios frameworks de Python."
             },
             projects: [
               { 
-                name: "E-commerce Platform", 
+                name: "Web Scraping System", 
                 description: {
-                  en: "Built a complete online store with shopping cart, payment processing, and inventory management using React and Node.js", 
-                  es: "Construí una tienda online completa con carrito de compras, procesamiento de pagos y gestión de inventario usando React y Node.js"
+                  en: "Developed advanced web scraping solutions with Python and Selenium for efficient analysis of large data volumes", 
+                  es: "Desarrollé soluciones avanzadas de web scraping con Python y Selenium para análisis eficiente de grandes volúmenes de datos"
                 }
               },
               { 
-                name: "Real-time Dashboard", 
+                name: "Data Processing Pipeline", 
                 description: {
-                  en: "Developed a real-time data visualization dashboard using WebSockets and D3.js", 
-                  es: "Desarrollé un panel de visualización de datos en tiempo real usando WebSockets y D3.js"
-                }
-              },
-              { 
-                name: "Custom CMS", 
-                description: {
-                  en: "Created a content management system with WYSIWYG editor and custom plugin architecture", 
-                  es: "Creé un sistema de gestión de contenido con editor WYSIWYG y arquitectura de plugins personalizada"
-                }
-              }
-            ],
-            related_skills: ["Node.js", "React", "TypeScript", "Vue.js", "Express"]
-          },
-          { 
-            name: "Python", 
-            level: 2, 
-            translations: { en: "Advanced", es: "Avanzado" },
-            description: {
-              en: "5+ years working with Python for backend services, data processing, and automation. Experience with Django, Flask, and FastAPI frameworks.",
-              es: "Más de 5 años trabajando con Python para servicios backend, procesamiento de datos y automatización. Experiencia con frameworks Django, Flask y FastAPI."
-            },
-            projects: [
-              { 
-                name: "Analytics API", 
-                description: {
-                  en: "Built a REST API for data analytics with Flask, SQLAlchemy, and Pandas", 
-                  es: "Construí una API REST para análisis de datos con Flask, SQLAlchemy y Pandas"
-                }
-              },
-              { 
-                name: "ETL Pipeline", 
-                description: {
-                  en: "Developed data extraction, transformation, and loading processes for a business intelligence platform", 
-                  es: "Desarrollé procesos de extracción, transformación y carga de datos para una plataforma de inteligencia empresarial"
+                  en: "Created automated data processing pipelines for extracting insights from diverse sources", 
+                  es: "Creé canales automatizados de procesamiento de datos para extraer información valiosa de diversas fuentes"
                 }
               },
               { 
                 name: "Automation Scripts", 
                 description: {
-                  en: "Created scripts for CI/CD processes and infrastructure management", 
-                  es: "Creé scripts para procesos de CI/CD y gestión de infraestructura"
+                  en: "Developed complex automation scripts for server management and task scheduling", 
+                  es: "Desarrollé scripts complejos de automatización para gestión de servidores y programación de tareas"
                 }
               }
             ],
-            related_skills: ["Django", "Flask", "FastAPI", "Pandas", "SQLAlchemy"]
+            related_skills: ["Selenium", "Data Analysis", "Web Scraping", "Automation", "APIs"]
           },
           { 
-            name: "PHP", 
-            level: 3, 
+            name: "Golang", 
+            level: 2, 
             translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "7+ years of PHP development. Expert in Laravel and traditional MVC frameworks. Experience with high-traffic applications and optimization.",
-              es: "Más de 7 años de desarrollo en PHP. Experto en Laravel y frameworks MVC tradicionales. Experiencia con aplicaciones de alto tráfico y optimización."
+              en: "5+ years developing with Go. Experience building microservices, APIs, and systems for automated Docker container management.",
+              es: "Más de 5 años desarrollando con Go. Experiencia construyendo microservicios, APIs y sistemas para gestión automática de contenedores Docker."
             },
             projects: [
               { 
-                name: "E-learning Platform", 
+                name: "Container Management System", 
                 description: {
-                  en: "Developed a complete learning management system with Laravel and Vue.js", 
-                  es: "Desarrollé un sistema completo de gestión de aprendizaje con Laravel y Vue.js"
+                  en: "Developed a system for automated Docker container management via REST APIs", 
+                  es: "Desarrollé un sistema para gestión automática de contenedores Docker mediante APIs REST"
                 }
               },
-              { 
-                name: "CRM System", 
-                description: {
-                  en: "Created a custom CRM with advanced reporting and API integrations", 
-                  es: "Creé un CRM personalizado con informes avanzados e integraciones API"
-                }
-              },
-              { 
-                name: "Payment Gateway", 
-                description: {
-                  en: "Implemented secure payment processing for multiple platforms using Stripe and PayPal APIs", 
-                  es: "Implementé procesamiento seguro de pagos para múltiples plataformas usando las APIs de Stripe y PayPal"
-                }
-              }
-            ],
-            related_skills: ["Laravel", "Symfony", "MySQL", "RESTful APIs", "Composer"]
-          },
-          { 
-            name: "TypeScript", 
-            level: 4, 
-            translations: { en: "Intermediate", es: "Intermedio" },
-            description: {
-              en: "3+ years using TypeScript for frontend and Node.js development. Experience with type systems, interfaces, and generics for building robust applications.",
-              es: "Más de 3 años usando TypeScript para desarrollo frontend y Node.js. Experiencia con sistemas de tipos, interfaces y genéricos para construir aplicaciones robustas."
-            },
-            projects: [
-              { 
-                name: "Enterprise Dashboard", 
-                description: {
-                  en: "Built a type-safe React application with complex state management", 
-                  es: "Construí una aplicación React con seguridad de tipos y gestión de estado compleja"
-                }
-              },
-              { 
-                name: "API Framework", 
-                description: {
-                  en: "Developed a custom API framework with Express and TypeScript decorators", 
-                  es: "Desarrollé un framework API personalizado con Express y decoradores TypeScript"
-                }
-              },
-              { 
-                name: "Component Library", 
-                description: {
-                  en: "Created a reusable UI component library with strong typing and documentation", 
-                  es: "Creé una biblioteca de componentes UI reutilizables con tipado fuerte y documentación"
-                }
-              }
-            ],
-            related_skills: ["JavaScript", "Node.js", "React", "Angular", "Express"]
-          },
-          { 
-            name: "Go", 
-            level: 5, 
-            translations: { en: "Intermediate", es: "Intermedio" },
-            description: {
-              en: "2+ years developing with Go. Experience building microservices, APIs, and CLI tools. Focus on performance and concurrency patterns.",
-              es: "Más de 2 años desarrollando con Go. Experiencia construyendo microservicios, APIs y herramientas CLI. Enfoque en patrones de rendimiento y concurrencia."
-            },
-            projects: [
               { 
                 name: "Microservice Architecture", 
                 description: {
-                  en: "Developed high-performance microservices for a distributed system", 
-                  es: "Desarrollé microservicios de alto rendimiento para un sistema distribuido"
+                  en: "Designed and implemented scalable microservices for enterprise clients", 
+                  es: "Diseñé e implementé microservicios escalables para clientes empresariales"
                 }
               },
               { 
-                name: "RESTful API", 
+                name: "High-Performance API", 
                 description: {
-                  en: "Built a RESTful API with Go and PostgreSQL for a logistics application", 
-                  es: "Construí una API RESTful con Go y PostgreSQL para una aplicación de logística"
-                }
-              },
-              { 
-                name: "CLI Tool", 
-                description: {
-                  en: "Created a command-line tool for automating deployment processes", 
-                  es: "Creé una herramienta de línea de comandos para automatizar procesos de despliegue"
+                  en: "Created high-performance APIs for critical business operations", 
+                  es: "Creé APIs de alto rendimiento para operaciones comerciales críticas"
                 }
               }
             ],
-            related_skills: ["Docker", "Kubernetes", "gRPC", "RESTful APIs", "PostgreSQL"]
+            related_skills: ["Docker", "Kubernetes", "REST APIs", "Microservices", "Performance Optimization"]
+          },
+          { 
+            name: "JavaScript/TypeScript", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "7+ years of experience with JavaScript and TypeScript for both frontend and backend development. Proficient in modern frameworks and async programming.",
+              es: "Más de 7 años de experiencia con JavaScript y TypeScript tanto para desarrollo frontend como backend. Dominio de frameworks modernos y programación asíncrona."
+            },
+            projects: [
+              { 
+                name: "Vue.js Applications", 
+                description: {
+                  en: "Developed modern web applications using Vue.js and TypeScript", 
+                  es: "Desarrollé aplicaciones web modernas usando Vue.js y TypeScript"
+                }
+              },
+              { 
+                name: "Node.js Backend Services", 
+                description: {
+                  en: "Created robust backend services with Node.js, Express, and NestJS", 
+                  es: "Creé servicios backend robustos con Node.js, Express y NestJS"
+                }
+              },
+              { 
+                name: "Real-time Systems", 
+                description: {
+                  en: "Implemented real-time systems using WebSockets and JWT authentication", 
+                  es: "Implementé sistemas en tiempo real usando WebSockets y autenticación JWT"
+                }
+              }
+            ],
+            related_skills: ["Vue.js", "Node.js", "NestJS", "WebSockets", "JWT"]
+          },
+          { 
+            name: "PHP", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "7+ years of PHP development. Expert in Laravel and Symfony frameworks. Experience with high-traffic applications and optimization.",
+              es: "Más de 7 años de desarrollo en PHP. Experto en frameworks Laravel y Symfony. Experiencia con aplicaciones de alto tráfico y optimización."
+            },
+            projects: [
+              { 
+                name: "Enterprise CMS", 
+                description: {
+                  en: "Developed custom content management systems for corporate clients", 
+                  es: "Desarrollé sistemas de gestión de contenido personalizados para clientes corporativos"
+                }
+              },
+              { 
+                name: "RESTful APIs", 
+                description: {
+                  en: "Created RESTful APIs for mobile application backends", 
+                  es: "Creé APIs RESTful para backends de aplicaciones móviles"
+                }
+              },
+              { 
+                name: "E-commerce Solutions", 
+                description: {
+                  en: "Implemented e-commerce platforms with secure payment processing", 
+                  es: "Implementé plataformas de comercio electrónico con procesamiento seguro de pagos"
+                }
+              }
+            ],
+            related_skills: ["Laravel", "Symfony", "MySQL", "RESTful APIs", "MVC"]
+          },
+          { 
+            name: "C/C++", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "5+ years of C/C++ programming. Experience developing system-level applications, automation scripts, and performance-critical components.",
+              es: "Más de 5 años de programación en C/C++. Experiencia desarrollando aplicaciones a nivel de sistema, scripts de automatización y componentes críticos de rendimiento."
+            },
+            projects: [
+              { 
+                name: "System Automation", 
+                description: {
+                  en: "Developed C scripts for backend automation and system management", 
+                  es: "Desarrollé scripts en C para automatización de backend y gestión de sistemas"
+                }
+              },
+              { 
+                name: "Performance Optimization", 
+                description: {
+                  en: "Optimized performance-critical components in legacy systems", 
+                  es: "Optimicé componentes críticos de rendimiento en sistemas heredados"
+                }
+              },
+              { 
+                name: "Low-level Programming", 
+                description: {
+                  en: "Created low-level programming solutions during 42 Network training", 
+                  es: "Creé soluciones de programación de bajo nivel durante la formación en 42 Network"
+                }
+              }
+            ],
+            related_skills: ["System Programming", "Memory Management", "Performance Optimization", "Bash", "Linux"]
+          },
+          { 
+            name: "Kotlin", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "4+ years experience with Kotlin for Android development. Proficient in building location-based applications with modern architecture components and Jetpack libraries.",
+              es: "Más de 4 años de experiencia con Kotlin para desarrollo Android. Competente en la creación de aplicaciones basadas en ubicación con componentes de arquitectura modernos y bibliotecas Jetpack."
+            },
+            projects: [
+              { 
+                name: "ReservaGPS App", 
+                description: {
+                  en: "Developed a reservation and location tracking application using MVVM architecture with LiveData and Coroutines", 
+                  es: "Desarrollé una aplicación de reservas y seguimiento de ubicación utilizando arquitectura MVVM con LiveData y Coroutines"
+                }
+              },
+              { 
+                name: "Real-time Tracking Service", 
+                description: {
+                  en: "Created a background service for continuous location updates using Kotlin Flows and Google Location API", 
+                  es: "Creé un servicio en segundo plano para actualizaciones continuas de ubicación usando Kotlin Flows y Google Location API"
+                }
+              },
+              { 
+                name: "JWT Authentication", 
+                description: {
+                  en: "Implemented secure JWT authentication with token refresh mechanism and local storage", 
+                  es: "Implementé autenticación segura JWT con mecanismo de actualización de tokens y almacenamiento local"
+                }
+              }
+            ],
+            related_skills: ["Android SDK", "MVVM", "API", "Room Database", "Retrofit", "Coroutines"]
+          },
+          { 
+            name: "Flutter", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "3+ years developing cross-platform applications with Flutter. Experience building reservation systems and location-based services with state management solutions.",
+              es: "Más de 3 años desarrollando aplicaciones multiplataforma con Flutter. Experiencia en la creación de sistemas de reservas y servicios basados en ubicación con soluciones de gestión de estado."
+            },
+            projects: [
+              { 
+                name: "ReservaFlutter", 
+                description: {
+                  en: "Built a cross-platform reservation app with BLoC pattern and clean architecture principles", 
+                  es: "Construí una aplicación de reservas multiplataforma con patrón BLoC y principios de arquitectura limpia"
+                }
+              },
+              { 
+                name: "GPS Navigator", 
+                description: {
+                  en: "Developed a custom navigation system using Flutter and Google Maps with real-time routing", 
+                  es: "Desarrollé un sistema de navegación personalizado usando Flutter y Google Maps con enrutamiento en tiempo real"
+                }
+              },
+              { 
+                name: "Offline Reservation Manager", 
+                description: {
+                  en: "Created an offline-first reservation system with local storage and background synchronization", 
+                  es: "Creé un sistema de reservas offline-first con almacenamiento local y sincronización en segundo plano"
+                }
+              }
+            ],
+            related_skills: ["Dart", "BLoC Pattern", "Provider", "Google Maps Flutter", "Firebase", "Offline Storage"]
+          },
+          { 
+            name: "Bash", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "6+ years experience with Bash scripting for automation, system administration, and DevOps tasks.",
+              es: "Más de 6 años de experiencia con scripts Bash para automatización, administración de sistemas y tareas DevOps."
+            },
+            projects: [
+              { 
+                name: "Deployment Automation", 
+                description: {
+                  en: "Created automated deployment scripts for continuous integration environments", 
+                  es: "Creé scripts automatizados de despliegue para entornos de integración continua"
+                }
+              },
+              { 
+                name: "System Monitoring", 
+                description: {
+                  en: "Developed scripts for system monitoring and alerting", 
+                  es: "Desarrollé scripts para monitoreo de sistemas y alertas"
+                }
+              },
+              { 
+                name: "Batch Processing", 
+                description: {
+                  en: "Implemented batch processing solutions for data management", 
+                  es: "Implementé soluciones de procesamiento por lotes para gestión de datos"
+                }
+              }
+            ],
+            related_skills: ["Linux", "Shell Scripting", "Automation", "DevOps", "Cron Jobs"]
           }
         ]
       },
@@ -203,135 +305,201 @@ export const appData = {
         skills: [
           { 
             name: "Vue.js", 
-            level: 5, 
-            translations: { en: "Expert", es: "Experto" },
+            level: 2, 
+            translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "6+ years of experience with Vue.js from early versions to the latest Vue 3 with Composition API. Skilled in Vuex, Vue Router, and Nuxt.js.",
-              es: "Más de 6 años de experiencia con Vue.js desde las primeras versiones hasta Vue 3 con la API de Composición. Dominio de Vuex, Vue Router y Nuxt.js."
+              en: "6+ years of experience with Vue.js from early versions to Vue 3 with Composition API. Skilled in state management and component architecture.",
+              es: "Más de 6 años de experiencia con Vue.js desde las primeras versiones hasta Vue 3 con la API de Composición. Dominio de gestión de estado y arquitectura de componentes."
             },
             projects: [
               { 
-                name: "E-commerce Frontend", 
+                name: "Corporate Dashboard", 
                 description: {
-                  en: "Built a complete online store frontend with Vue 3, Vuex, and Tailwind CSS", 
-                  es: "Construí un frontend completo para tienda online con Vue 3, Vuex y Tailwind CSS"
+                  en: "Built responsive dashboards for data visualization and management", 
+                  es: "Construí dashboards responsivos para visualización y gestión de datos"
                 }
               },
               { 
-                name: "Admin Dashboard", 
+                name: "Single Page Applications", 
                 description: {
-                  en: "Created a responsive admin panel with complex data visualization components", 
-                  es: "Creé un panel de administración responsive con componentes complejos de visualización de datos"
+                  en: "Developed complex single page applications with optimized performance", 
+                  es: "Desarrollé aplicaciones de página única complejas con rendimiento optimizado"
                 }
               },
               { 
-                name: "SaaS Platform", 
+                name: "Component Libraries", 
                 description: {
-                  en: "Developed a multi-tenant SaaS application with Nuxt.js and serverless functions", 
-                  es: "Desarrollé una aplicación SaaS multi-inquilino con Nuxt.js y funciones serverless"
+                  en: "Created reusable component libraries for enterprise applications", 
+                  es: "Creé bibliotecas de componentes reutilizables para aplicaciones empresariales"
                 }
               }
             ],
-            related_skills: ["JavaScript", "Vuex", "Nuxt.js", "Vue Router", "Tailwind CSS"]
+            related_skills: ["JavaScript", "TypeScript", "Vuex", "Vue Router", "Composition API"]
+          },
+          { 
+            name: "Node.js", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "7+ years building backend services with Node.js. Experience with Express, NestJS, and asynchronous programming patterns.",
+              es: "Más de 7 años construyendo servicios backend con Node.js. Experiencia con Express, NestJS y patrones de programación asíncrona."
+            },
+            projects: [
+              { 
+                name: "RESTful APIs", 
+                description: {
+                  en: "Developed scalable RESTful APIs for web and mobile applications", 
+                  es: "Desarrollé APIs RESTful escalables para aplicaciones web y móviles"
+                }
+              },
+              { 
+                name: "Real-time Services", 
+                description: {
+                  en: "Created real-time services using WebSockets and event-driven architecture", 
+                  es: "Creé servicios en tiempo real usando WebSockets y arquitectura basada en eventos"
+                }
+              },
+              { 
+                name: "Microservices", 
+                description: {
+                  en: "Designed and implemented microservice architectures with message queues", 
+                  es: "Diseñé e implementé arquitecturas de microservicios con colas de mensajes"
+                }
+              }
+            ],
+            related_skills: ["Express", "NestJS", "WebSockets", "RabbitMQ", "Redis"]
+          },
+          { 
+            name: "NestJS", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "2+ years working with NestJS framework. Experience building enterprise-grade APIs, microservices, and GraphQL endpoints.",
+              es: "Más de 2 años trabajando con el framework NestJS. Experiencia construyendo APIs empresariales, microservicios y endpoints GraphQL."
+            },
+            projects: [
+              { 
+                name: "Enterprise APIs", 
+                description: {
+                  en: "Developed enterprise-grade APIs with robust authentication and authorization", 
+                  es: "Desarrollé APIs empresariales con autenticación y autorización robustas"
+                }
+              },
+              { 
+                name: "Microservice Systems", 
+                description: {
+                  en: "Created microservice systems with message integration",
+                  es: "Creé sistemas de microservicios con integración de mensajería",
+                }
+              },
+              { 
+                name: "Real-time Applications", 
+                description: {
+                  en: "Built real-time applications with WebSockets and event handling", 
+                  es: "Construí aplicaciones en tiempo real con WebSockets y manejo de eventos"
+                }
+              }
+            ],
+            related_skills: ["TypeScript", "Node.js", "Microservices", "WebSockets", "JWT"]
           },
           { 
             name: "Laravel", 
             level: 4, 
             translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "5+ years of Laravel development. Experience with full-stack applications, REST APIs, and database optimization. Skilled in Laravel ecosystem tools.",
-              es: "Más de 5 años de desarrollo con Laravel. Experiencia en aplicaciones full-stack, APIs REST y optimización de bases de datos. Dominio de herramientas del ecosistema Laravel."
+              en: "5+ years of Laravel development. Experience with full-stack applications, REST APIs, and database optimization.",
+              es: "Más de 5 años de desarrollo con Laravel. Experiencia en aplicaciones full-stack, APIs REST y optimización de bases de datos."
             },
             projects: [
               { 
-                name: "Multi-vendor Marketplace", 
+                name: "CMS Systems", 
                 description: {
-                  en: "Built a marketplace platform with vendor management, product listings, and payment processing", 
-                  es: "Construí una plataforma de marketplace con gestión de vendedores, listados de productos y procesamiento de pagos"
+                  en: "Developed customized content management systems for corporate clients", 
+                  es: "Desarrollé sistemas de gestión de contenido personalizados para clientes corporativos"
                 }
               },
               { 
-                name: "API Backend", 
+                name: "Backend APIs", 
                 description: {
-                  en: "Developed a RESTful API with Laravel Sanctum authentication and complex database relationships", 
-                  es: "Desarrollé una API RESTful con autenticación Laravel Sanctum y relaciones complejas de base de datos"
+                  en: "Created backend APIs for mobile and web applications", 
+                  es: "Creé APIs backend para aplicaciones móviles y web"
                 }
               },
               { 
-                name: "CMS System", 
+                name: "E-commerce Solutions", 
                 description: {
-                  en: "Created a custom content management system with role-based permissions and workflow approval", 
-                  es: "Creé un sistema de gestión de contenido personalizado con permisos basados en roles y aprobación de flujo de trabajo"
+                  en: "Implemented e-commerce solutions with payment gateway integrations", 
+                  es: "Implementé soluciones de comercio electrónico con integraciones de pasarelas de pago"
                 }
               }
             ],
-            related_skills: ["PHP", "MySQL", "Eloquent ORM", "Laravel Nova", "Laravel Livewire"]
+            related_skills: ["PHP", "MySQL", "Eloquent ORM", "Blade", "REST APIs"]
           },
           { 
-            name: "Node.js", 
-            level: 4, 
-            translations: { en: "Advanced", es: "Avanzado" },
-            description: {
-              en: "6+ years building backend services with Node.js. Experience with Express, Fastify, and NestJS frameworks. Skilled in asynchronous programming patterns.",
-              es: "Más de 6 años construyendo servicios backend con Node.js. Experiencia con frameworks Express, Fastify y NestJS. Dominio de patrones de programación asíncrona."
-            },
-            projects: [
-              { 
-                name: "Real-time Chat Service", 
-                description: {
-                  en: "Built a scalable WebSocket-based chat service with Redis for pub/sub messaging", 
-                  es: "Construí un servicio de chat escalable basado en WebSocket con Redis para mensajería pub/sub"
-                }
-              },
-              { 
-                name: "REST API", 
-                description: {
-                  en: "Developed a comprehensive API with authentication, rate limiting, and caching", 
-                  es: "Desarrollé una API completa con autenticación, limitación de velocidad y almacenamiento en caché"
-                }
-              },
-              { 
-                name: "ETL Service", 
-                description: {
-                  en: "Created data processing pipelines for importing and normalizing data from multiple sources", 
-                  es: "Creé canales de procesamiento de datos para importar y normalizar datos de múltiples fuentes"
-                }
-              }
-            ],
-            related_skills: ["JavaScript", "Express", "MongoDB", "RESTful APIs", "Microservices"]
-          },
-          { 
-            name: "NestJS", 
+            name: "Symfony", 
             level: 3, 
             translations: { en: "Intermediate", es: "Intermedio" },
             description: {
-              en: "3+ years working with NestJS framework. Experience building enterprise-grade APIs, microservices, and GraphQL endpoints.",
-              es: "Más de 3 años trabajando con el framework NestJS. Experiencia construyendo APIs empresariales, microservicios y endpoints GraphQL."
+              en: "4+ years working with Symfony framework. Experience with complex applications, component architecture, and performance optimization.",
+              es: "Más de 4 años trabajando con el framework Symfony. Experiencia con aplicaciones complejas, arquitectura de componentes y optimización de rendimiento."
             },
             projects: [
               { 
-                name: "Microservice Architecture", 
+                name: "Enterprise Applications", 
                 description: {
-                  en: "Designed and implemented a microservice-based backend with message broker integration", 
-                  es: "Diseñé e implementé un backend basado en microservicios con integración de brokers de mensajería"
+                  en: "Developed enterprise-level applications with complex business logic", 
+                  es: "Desarrollé aplicaciones de nivel empresarial con lógica de negocio compleja"
                 }
               },
               { 
-                name: "GraphQL API", 
+                name: "Service Integration", 
                 description: {
-                  en: "Built a GraphQL API with NestJS and TypeORM for a content platform", 
-                  es: "Construí una API GraphQL con NestJS y TypeORM para una plataforma de contenido"
+                  en: "Created service integration platforms for connecting multiple systems", 
+                  es: "Creé plataformas de integración de servicios para conectar múltiples sistemas"
                 }
               },
               { 
-                name: "Authentication Service", 
+                name: "Performance Optimization", 
                 description: {
-                  en: "Developed a secure authentication service with JWT, OAuth2, and role-based access control", 
-                  es: "Desarrollé un servicio de autenticación seguro con JWT, OAuth2 y control de acceso basado en roles"
+                  en: "Optimized high-traffic applications for improved performance", 
+                  es: "Optimicé aplicaciones de alto tráfico para mejorar el rendimiento"
                 }
               }
             ],
-            related_skills: ["TypeScript", "Node.js", "GraphQL", "TypeORM", "Microservices"]
+            related_skills: ["PHP", "Doctrine ORM", "Twig", "DependencyInjection", "EventDispatcher"]
+          },
+          { 
+            name: "n8n", 
+            level: 3, 
+            translations: { en: "Intermediate", es: "Intermedio" },
+            description: {
+              en: "1 year of experience with n8n for workflow automation. Experience in integrating different systems and creating automated business processes.",
+              es: "1 año de experiencia con n8n para automatización de flujos de trabajo. Experiencia en integración de diferentes sistemas y creación de procesos de negocio automatizados.",
+            },
+            projects: [
+              { 
+                name: "Process Automation", 
+                description: {
+                  en: "Automated complex business processes across multiple systems", 
+                  es: "Automaticé procesos de negocio complejos a través de múltiples sistemas"
+                }
+              },
+              { 
+                name: "System Integration", 
+                description: {
+                  en: "Created workflows to integrate disparate systems and APIs", 
+                  es: "Creé flujos de trabajo para integrar sistemas y APIs dispares"
+                }
+              },
+              { 
+                name: "Data Processing", 
+                description: {
+                  en: "Developed data processing workflows for ETL operations", 
+                  es: "Desarrollé flujos de trabajo de procesamiento de datos para operaciones ETL"
+                }
+              }
+            ],
+            related_skills: ["Workflow Automation", "API Integration", "Webhooks", "ETL", "Business Process Automation"]
           }
         ]
       },
@@ -343,103 +511,136 @@ export const appData = {
         },
         skills: [
           { 
-            name: "MySQL", 
-            level: 4, 
-            translations: { en: "Advanced", es: "Avanzado" },
-            description: {
-              en: "7+ years working with MySQL databases. Experience with optimization, replication, and high-availability setups. Skilled in complex queries and database design.",
-              es: "Más de 7 años trabajando con bases de datos MySQL. Experiencia en optimización, replicación y configuraciones de alta disponibilidad. Dominio de consultas complejas y diseño de bases de datos."
-            },
-            projects: [
-              { 
-                name: "E-commerce Database", 
-                description: {
-                  en: "Designed and optimized database schema for high-traffic online store with partitioning", 
-                  es: "Diseñé y optimicé esquema de base de datos para tienda online de alto tráfico con particionamiento"
-                }
-              },
-              { 
-                name: "Reporting System", 
-                description: {
-                  en: "Created complex stored procedures and views for business intelligence reporting", 
-                  es: "Creé procedimientos almacenados complejos y vistas para informes de inteligencia empresarial"
-                }
-              },
-              { 
-                name: "HA Database Cluster", 
-                description: {
-                  en: "Set up and managed a high-availability MySQL cluster with replication and failover", 
-                  es: "Configuré y administré un clúster MySQL de alta disponibilidad con replicación y failover"
-                }
-              }
-            ],
-            related_skills: ["SQL", "Database Design", "Performance Tuning", "InnoDB", "Stored Procedures"]
-          },
-          { 
             name: "PostgreSQL", 
             level: 4, 
             translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "5+ years of PostgreSQL database development. Experience with advanced features like JSON data types, full-text search, and geospatial functions.",
-              es: "Más de 5 años de desarrollo de bases de datos PostgreSQL. Experiencia con características avanzadas como tipos de datos JSON, búsqueda de texto completo y funciones geoespaciales."
+              en: "7+ years of PostgreSQL database development. Experience with advanced features, performance tuning, and high-availability configurations.",
+              es: "Más de 7 años de desarrollo de bases de datos PostgreSQL. Experiencia con características avanzadas, ajuste de rendimiento y configuraciones de alta disponibilidad."
             },
             projects: [
               { 
-                name: "Location-based Service", 
+                name: "Enterprise Databases", 
                 description: {
-                  en: "Built a geospatial database with PostGIS for a location-tracking application", 
-                  es: "Construí una base de datos geoespacial con PostGIS para una aplicación de seguimiento de ubicación"
+                  en: "Designed and optimized enterprise-level database systems", 
+                  es: "Diseñé y optimicé sistemas de bases de datos de nivel empresarial"
                 }
               },
               { 
-                name: "Analytics Platform", 
+                name: "Performance Tuning", 
                 description: {
-                  en: "Developed a data warehouse with materialized views and complex aggregation queries", 
-                  es: "Desarrollé un almacén de datos con vistas materializadas y consultas complejas de agregación"
+                  en: "Performed database performance tuning for high-traffic applications", 
+                  es: "Realicé ajustes de rendimiento de bases de datos para aplicaciones de alto tráfico"
                 }
               },
               { 
-                name: "Document Storage", 
+                name: "Data Migration", 
                 description: {
-                  en: "Created a hybrid document-relational database using JSONB data types and indexes", 
-                  es: "Creé una base de datos híbrida documental-relacional usando tipos de datos JSONB e índices"
+                  en: "Managed complex data migration projects between different systems", 
+                  es: "Gestioné proyectos complejos de migración de datos entre diferentes sistemas"
                 }
               }
             ],
-            related_skills: ["SQL", "PostGIS", "JSONB", "Triggers", "Materialized Views"]
+            related_skills: ["SQL", "Database Design", "Performance Tuning", "Replication", "PL/pgSQL"]
+          },
+          { 
+            name: "MySQL/MariaDB", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "8+ years working with MySQL and MariaDB. Experience with optimization, replication, and high-availability configurations.",
+              es: "Más de 8 años trabajando con MySQL y MariaDB. Experiencia en optimización, replicación y configuraciones de alta disponibilidad."
+            },
+            projects: [
+              { 
+                name: "Web Application Databases", 
+                description: {
+                  en: "Designed and maintained databases for high-traffic web applications", 
+                  es: "Diseñé y mantuve bases de datos para aplicaciones web de alto tráfico"
+                }
+              },
+              { 
+                name: "Replication Setup", 
+                description: {
+                  en: "Configured and managed database replication for high availability", 
+                  es: "Configuré y administré replicación de bases de datos para alta disponibilidad"
+                }
+              },
+              { 
+                name: "Query Optimization", 
+                description: {
+                  en: "Optimized complex queries and database schema for performance", 
+                  es: "Optimicé consultas complejas y esquemas de bases de datos para mejorar el rendimiento"
+                }
+              }
+            ],
+            related_skills: ["SQL", "Database Design", "Performance Tuning", "Replication", "Stored Procedures"]
           },
           { 
             name: "MongoDB", 
             level: 3, 
             translations: { en: "Intermediate", es: "Intermedio" },
             description: {
-              en: "4+ years using MongoDB for document-oriented storage. Experience with aggregation pipelines, indexing strategies, and MongoDB Atlas.",
-              es: "Más de 4 años usando MongoDB para almacenamiento orientado a documentos. Experiencia con canales de agregación, estrategias de indexación y MongoDB Atlas."
+              en: "4+ years using MongoDB for document-oriented storage. Experience with aggregation pipelines, indexing strategies, and cluster management.",
+              es: "Más de 4 años usando MongoDB para almacenamiento orientado a documentos. Experiencia con canales de agregación, estrategias de indexación y gestión de clústeres."
             },
             projects: [
               { 
-                name: "Content Repository", 
+                name: "NoSQL Solutions", 
                 description: {
-                  en: "Designed schema for a flexible content management system with nested documents", 
-                  es: "Diseñé esquema para un sistema flexible de gestión de contenido con documentos anidados"
+                  en: "Implemented NoSQL database solutions for flexible data storage", 
+                  es: "Implementé soluciones de bases de datos NoSQL para almacenamiento flexible de datos"
                 }
               },
               { 
-                name: "User Profile System", 
+                name: "Real-time Applications", 
                 description: {
-                  en: "Built a scalable user profile and preferences storage with complex querying", 
-                  es: "Construí un almacenamiento escalable de perfiles de usuario y preferencias con consultas complejas"
+                  en: "Designed database solutions for real-time applications", 
+                  es: "Diseñé soluciones de bases de datos para aplicaciones en tiempo real"
                 }
               },
               { 
-                name: "Real-time Analytics", 
+                name: "Document Storage", 
                 description: {
-                  en: "Developed a real-time analytics system using change streams and aggregation", 
-                  es: "Desarrollé un sistema de analítica en tiempo real usando change streams y agregación"
+                  en: "Created document storage systems with complex querying capabilities", 
+                  es: "Creé sistemas de almacenamiento de documentos con capacidades de consulta complejas"
                 }
               }
             ],
-            related_skills: ["NoSQL", "Aggregation Framework", "Node.js", "Indexing", "MongoDB Atlas"]
+            related_skills: ["NoSQL", "Aggregation Framework", "Indexing", "Sharding", "Document Design"]
+          },
+          { 
+            name: "Redis", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "5+ years working with Redis for caching, queuing, and real-time data storage. Experience with advanced features and high-performance configurations.",
+              es: "Más de 5 años trabajando con Redis para caché, colas y almacenamiento de datos en tiempo real. Experiencia con características avanzadas y configuraciones de alto rendimiento."
+            },
+            projects: [
+              { 
+                name: "Caching Systems", 
+                description: {
+                  en: "Implemented caching systems for high-performance applications", 
+                  es: "Implementé sistemas de caché para aplicaciones de alto rendimiento"
+                }
+              },
+              { 
+                name: "Message Queues", 
+                description: {
+                  en: "Developed message queue systems for asynchronous processing", 
+                  es: "Desarrollé sistemas de colas de mensajes para procesamiento asíncrono"
+                }
+              },
+              { 
+                name: "Real-time Data Store", 
+                description: {
+                  en: "Created real-time data stores for fast-changing information", 
+                  es: "Creé almacenes de datos en tiempo real para información de rápido cambio"
+                }
+              }
+            ],
+            related_skills: ["Caching", "Message Queues", "Pub/Sub", "Data Structures", "Performance Optimization"]
           }
         ]
       },
@@ -453,101 +654,266 @@ export const appData = {
           { 
             name: "Docker", 
             level: 4, 
-            translations: { en: "Advanced", es: "Avanzado" },
+            translations: { en: "Expert", es: "Experto" },
             description: {
-              en: "5+ years working with Docker for containerization. Experience with multi-container applications, custom images, and Docker Compose orchestration.",
-              es: "Más de 5 años trabajando con Docker para contenedorización. Experiencia con aplicaciones multi-contenedor, imágenes personalizadas y orquestación con Docker Compose."
+              en: "6+ years working with Docker for containerization. Experience with complex multi-container applications and container orchestration.",
+              es: "Más de 6 años trabajando con Docker para contenedorización. Experiencia con aplicaciones complejas multi-contenedor y orquestación de contenedores."
             },
             projects: [
               { 
-                name: "Microservice Infrastructure", 
+                name: "Containerized Applications", 
                 description: {
-                  en: "Containerized a complex application into multiple microservices with Docker Compose", 
-                  es: "Contenericé una aplicación compleja en múltiples microservicios con Docker Compose"
+                  en: "Containerized complex applications for consistent deployment environments", 
+                  es: "Contenericé aplicaciones complejas para entornos de despliegue consistentes"
                 }
               },
               { 
-                name: "CI/CD Pipeline", 
+                name: "Multi-container Solutions", 
                 description: {
-                  en: "Built automated testing and deployment pipelines with Docker and GitHub Actions", 
-                  es: "Construí canales automatizados de prueba y despliegue con Docker y GitHub Actions"
+                  en: "Designed and implemented multi-container solution architectures", 
+                  es: "Diseñé e implementé arquitecturas de soluciones multi-contenedor"
                 }
               },
               { 
-                name: "Development Environment", 
+                name: "CI/CD Integration", 
                 description: {
-                  en: "Created standardized development environments across team with Docker and VSCode", 
-                  es: "Creé entornos de desarrollo estandarizados para todo el equipo con Docker y VSCode"
+                  en: "Integrated Docker with CI/CD pipelines for automated testing and deployment", 
+                  es: "Integré Docker con canales CI/CD para pruebas y despliegue automatizados"
                 }
               }
             ],
-            related_skills: ["Kubernetes", "Docker Compose", "CI/CD", "Containerization", "DevOps"]
+            related_skills: ["Containerization", "Docker Compose", "Container Orchestration", "CI/CD", "Microservices"]
           },
           { 
-            name: "Git", 
-            level: 5, 
-            translations: { en: "Expert", es: "Experto" },
+            name: "Kubernetes", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "8+ years of Git version control. Advanced knowledge of branching strategies, submodules, hooks, and Git workflows for team collaboration.",
-              es: "Más de 8 años de control de versiones Git. Conocimiento avanzado de estrategias de ramificación, submódulos, hooks y flujos de trabajo Git para colaboración en equipo."
+              en: "4+ years experience with Kubernetes for container orchestration. Skilled in deployment strategies, scaling, and cluster management.",
+              es: "Más de 4 años de experiencia con Kubernetes para orquestación de contenedores. Dominio en estrategias de despliegue, escalado y gestión de clústeres."
             },
             projects: [
               { 
-                name: "Monorepo Management", 
+                name: "Container Orchestration", 
                 description: {
-                  en: "Established monorepo structure with specialized Git workflows for multiple projects", 
-                  es: "Establecí estructura de monorepo con flujos de trabajo Git especializados para múltiples proyectos"
+                  en: "Managed container orchestration for large-scale applications", 
+                  es: "Gestioné orquestación de contenedores para aplicaciones a gran escala"
                 }
               },
               { 
-                name: "Git Hooks Framework", 
+                name: "Deployment Automation", 
                 description: {
-                  en: "Developed custom Git hooks for automated code quality checks and conventional commits", 
-                  es: "Desarrollé hooks Git personalizados para verificaciones automatizadas de calidad de código y commits convencionales"
+                  en: "Automated deployment processes for Kubernetes environments", 
+                  es: "Automaticé procesos de despliegue para entornos Kubernetes"
                 }
               },
               { 
-                name: "CI Integration", 
+                name: "High-Availability Clusters", 
+                description: {
+                  en: "Configured and managed high-availability Kubernetes clusters", 
+                  es: "Configuré y administré clústeres Kubernetes de alta disponibilidad"
+                }
+              }
+            ],
+            related_skills: ["Container Orchestration", "Cluster Management", "Deployment Strategies", "Service Mesh", "Helm"]
+          },
+          { 
+            name: "AWS", 
+            level: 3, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "5+ years working with AWS services. Experience with EC2, S3, Lambda, RDS, and other core services for cloud infrastructure.",
+              es: "Más de 5 años trabajando con servicios AWS. Experiencia con EC2, S3, Lambda, RDS y otros servicios principales para infraestructura en la nube."
+            },
+            projects: [
+              { 
+                name: "Cloud Infrastructure", 
+                description: {
+                  en: "Designed and implemented cloud infrastructure for enterprise applications", 
+                  es: "Diseñé e implementé infraestructura en la nube para aplicaciones empresariales"
+                }
+              },
+              { 
+                name: "Serverless Applications", 
+                description: {
+                  en: "Developed serverless applications using Lambda and API Gateway", 
+                  es: "Desarrollé aplicaciones serverless usando Lambda y API Gateway"
+                }
+              },
+              { 
+                name: "Data Storage Solutions", 
+                description: {
+                  en: "Created scalable data storage solutions with S3 and RDS", 
+                  es: "Creé soluciones escalables de almacenamiento de datos con S3 y RDS"
+                }
+              }
+            ],
+            related_skills: ["EC2", "S3", "Lambda", "RDS", "CloudFormation"]
+          },
+          { 
+            name: "Google Cloud", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "4+ years experience with Google Cloud Platform. Skilled in Compute Engine, Kubernetes Engine, and cloud infrastructure management.",
+              es: "Más de 4 años de experiencia con Google Cloud Platform. Dominio en Compute Engine, Kubernetes Engine y gestión de infraestructura en la nube."
+            },
+            projects: [
+              { 
+                name: "GKE Management", 
+                description: {
+                  en: "Managed Google Kubernetes Engine clusters for containerized applications", 
+                  es: "Gestioné clústeres de Google Kubernetes Engine para aplicaciones en contenedores"
+                }
+              },
+              { 
+                name: "Cloud Infrastructure", 
+                description: {
+                  en: "Designed cloud infrastructure for scalable applications", 
+                  es: "Diseñé infraestructura en la nube para aplicaciones escalables"
+                }
+              },
+              { 
+                name: "Data Processing", 
+                description: {
+                  en: "Implemented data processing solutions using Google Cloud services", 
+                  es: "Implementé soluciones de procesamiento de datos usando servicios de Google Cloud"
+                }
+              }
+            ],
+            related_skills: ["Compute Engine", "Kubernetes Engine", "Cloud Storage", "Cloud Functions", "BigQuery"]
+          },
+          { 
+            name: "RabbitMQ", 
+            level: 2, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "5+ years working with RabbitMQ for message queuing. Experience with complex messaging patterns and high-throughput systems.",
+              es: "Más de 5 años trabajando con RabbitMQ para colas de mensajes. Experiencia con patrones complejos de mensajería y sistemas de alto rendimiento."
+            },
+            projects: [
+              { 
+                name: "Message Queue Systems", 
+                description: {
+                  en: "Implemented message queue systems for distributed applications", 
+                  es: "Implementé sistemas de colas de mensajes para aplicaciones distribuidas"
+                }
+              },
+              { 
+                name: "Event-driven Architecture", 
+                description: {
+                  en: "Designed event-driven architectures using message brokers", 
+                  es: "Diseñé arquitecturas basadas en eventos usando brokers de mensajes"
+                }
+              },
+              { 
+                name: "Asynchronous Processing", 
+                description: {
+                  en: "Created asynchronous processing systems for high-load operations", 
+                  es: "Creé sistemas de procesamiento asíncrono para operaciones de alta carga"
+                }
+              }
+            ],
+            related_skills: ["Message Queues", "AMQP", "Distributed Systems", "Event-driven Architecture", "System Integration"]
+          },
+          { 
+            name: "Git", 
+            level: 4, 
+            translations: { en: "Advanced", es: "Avanzado" },
+            description: {
+              en: "8+ years of Git version control. Advanced knowledge of branching strategies, workflows, and collaborative development.",
+              es: "Más de 8 años de control de versiones Git. Conocimiento avanzado de estrategias de ramificación, flujos de trabajo y desarrollo colaborativo."
+            },
+            projects: [
+              { 
+                name: "Team Workflow", 
+                description: {
+                  en: "Established Git workflows and best practices for development teams", 
+                  es: "Establecí flujos de trabajo Git y mejores prácticas para equipos de desarrollo"
+                }
+              },
+              { 
+                name: "CI/CD Integration", 
                 description: {
                   en: "Integrated Git with CI/CD pipelines for automated testing and deployment", 
                   es: "Integré Git con canales CI/CD para pruebas y despliegue automatizados"
                 }
+              },
+              { 
+                name: "Version Control Strategies", 
+                description: {
+                  en: "Implemented advanced version control strategies for complex projects", 
+                  es: "Implementé estrategias avanzadas de control de versiones para proyectos complejos"
+                }
               }
             ],
-            related_skills: ["GitHub", "GitLab", "Conventional Commits", "Code Review", "Branching Strategies"]
+            related_skills: ["GitHub", "GitLab", "Branching Strategies", "Code Review", "Version Control"]
+          },
+          { 
+            name: "Azure", 
+            level: 4, 
+            translations: { en: "Intermediate", es: "Intermedio" },
+            description: {
+              en: "3+ years experience with Microsoft Azure. Knowledge of virtual machines, app services, and Azure DevOps.",
+              es: "Más de 3 años de experiencia con Microsoft Azure. Conocimiento de máquinas virtuales, servicios de aplicaciones y Azure DevOps."
+            },
+            projects: [
+              { 
+                name: "Cloud Migration", 
+                description: {
+                  en: "Migrated on-premises applications to Azure cloud infrastructure", 
+                  es: "Migré aplicaciones locales a infraestructura en la nube de Azure"
+                }
+              },
+              { 
+                name: "Azure DevOps", 
+                description: {
+                  en: "Implemented CI/CD pipelines using Azure DevOps", 
+                  es: "Implementé canales CI/CD usando Azure DevOps"
+                }
+              },
+              { 
+                name: "App Services", 
+                description: {
+                  en: "Deployed and managed applications using Azure App Services", 
+                  es: "Desplegué y administré aplicaciones usando Azure App Services"
+                }
+              }
+            ],
+            related_skills: ["Cloud Computing", "Virtual Machines", "App Services", "Azure DevOps", "Infrastructure as Code"]
           },
           { 
             name: "CI/CD", 
             level: 3, 
-            translations: { en: "Intermediate", es: "Intermedio" },
+            translations: { en: "Advanced", es: "Avanzado" },
             description: {
-              en: "4+ years implementing continuous integration and deployment pipelines. Experience with GitHub Actions, GitLab CI, and Jenkins.",
-              es: "Más de 4 años implementando canales de integración y despliegue continuos. Experiencia con GitHub Actions, GitLab CI y Jenkins."
+              en: "5+ years implementing continuous integration and deployment pipelines. Experience with GitHub Actions, GitLab CI, and Jenkins.",
+              es: "Más de 5 años implementando canales de integración y despliegue continuos. Experiencia con GitHub Actions, GitLab CI y Jenkins."
             },
             projects: [
               { 
                 name: "Automated Deployment", 
                 description: {
-                  en: "Implemented zero-downtime deployment workflow for multiple environments", 
-                  es: "Implementé flujo de trabajo de despliegue sin tiempo de inactividad para múltiples entornos"
+                  en: "Implemented zero-downtime deployment workflows for production environments", 
+                  es: "Implementé flujos de trabajo de despliegue sin tiempo de inactividad para entornos de producción"
                 }
               },
               { 
-                name: "Testing Pipeline", 
+                name: "Test Automation", 
                 description: {
-                  en: "Created automated testing pipeline with unit, integration, and end-to-end tests", 
-                  es: "Creé canal de pruebas automatizado con pruebas unitarias, de integración y end-to-end"
+                  en: "Created comprehensive test automation as part of CI/CD pipelines", 
+                  es: "Creé automatización de pruebas integral como parte de canales CI/CD"
                 }
               },
               { 
-                name: "Infrastructure as Code", 
+                name: "Pipeline Optimization", 
                 description: {
-                  en: "Developed CI/CD for infrastructure management with Terraform and GitHub Actions", 
-                  es: "Desarrollé CI/CD para gestión de infraestructura con Terraform y GitHub Actions"
+                  en: "Optimized CI/CD pipelines for faster builds and deployments", 
+                  es: "Optimicé canales CI/CD para builds y despliegues más rápidos"
                 }
               }
             ],
-            related_skills: ["GitHub Actions", "GitLab CI", "Docker", "Automated Testing", "Deployment Strategies"]
+            related_skills: ["GitHub Actions", "GitLab CI", "Jenkins", "Docker", "Automated Testing"]
           }
         ]
       }
@@ -557,62 +923,68 @@ export const appData = {
   // Experiencia profesional
   experience: [
     {
-      company: "XYZ Corp",
-      period: "2020-Present",
+      company: "Diario de España",
+      period: "2021-2025",
       title: {
-        en: "Senior Developer",
-        es: "Desarrollador Senior"
+        en: "Senior Software Development Engineer",
+        es: "Ingeniero Senior de Desarrollo de Software"
       },
       responsibilities: {
         en: [
-          "Led team of 5 developers on e-commerce platform",
-          "Implemented CI/CD pipeline resulting in 40% faster deployments",
-          "Reduced loading times by 60% through optimizations"
+          "Developed and optimized back-end solutions, specializing in queue systems (RabbitMQ, Redis)",
+          "Automated processes with C and Bash scripts, advanced management of Docker containers and Kubernetes",
+          "Implemented web scraping with Python and Selenium for efficient analysis of large data volumes",
+          "Led technical teams, ensuring achievement of objectives through agile methodologies (Scrum/Kanban)",
+          "Integrated and automated processes through workflows in n8n"
         ],
         es: [
-          "Lideró un equipo de 5 desarrolladores en plataforma de comercio electrónico",
-          "Implementó pipeline de CI/CD resultando en despliegues 40% más rápidos",
-          "Redujo tiempos de carga en un 60% a través de optimizaciones"
+          "Desarrollo y optimización de soluciones back-end, especialización en sistemas de colas (RabbitMQ, Redis)",
+          "Automatización con scripts en C y Bash, gestión avanzada de contenedores Docker y Kubernetes",
+          "Web scraping con Python y Selenium para análisis eficiente de grandes volúmenes de datos",
+          "Liderazgo de equipos técnicos, asegurando cumplimiento de objetivos mediante metodologías ágiles (Scrum/Kanban)",
+          "Integración y automatización de procesos mediante workflows en n8n"
         ]
       }
     },
     {
-      company: "Freelance",
-      period: "2018-2020",
+      company: "APROS PERÚ",
+      period: "2020-2021",
       title: {
-        en: "Freelance Developer",
-        es: "Desarrollador Freelance"
+        en: "Senior Software Engineer",
+        es: "Ingeniero de Software Senior"
       },
       responsibilities: {
         en: [
-          "Developed custom CMS for small businesses",
-          "Created responsive designs for 20+ clients",
-          "Integrated payment gateways and analytics systems"
+          "Designed scalable architectures and custom databases for strategic clients",
+          "Provided key technological consulting at ComexPeru, implementing significant improvements in infrastructure and processes",
+          "Developed systems in Golang for automatic Docker container management via REST APIs",
+          "Administered servers and IT security, conducted preventive audits"
         ],
         es: [
-          "Desarrolló CMS personalizado para pequeños negocios",
-          "Creó diseños responsivos para más de 20 clientes",
-          "Integró pasarelas de pago y sistemas de analítica"
+          "Diseño de arquitecturas escalables y bases de datos personalizadas para clientes estratégicos",
+          "Consultoría tecnológica clave en ComexPeru, implementando mejoras significativas en infraestructura y procesos",
+          "Desarrollo en Golang de sistemas para gestión automática de contenedores Docker mediante APIs REST",
+          "Administración de servidores y seguridad informática, realización de auditorías preventivas"
         ]
       }
     },
     {
-      company: "Open Source",
-      period: "2017-Present",
+      company: "Studio Tigres S.A.C.",
+      period: "2017-2019",
       title: {
-        en: "Open Source Contributor",
-        es: "Colaborador de Código Abierto"
+        en: "Office Director and Senior Programmer",
+        es: "Director Oficina y Programador Senior"
       },
       responsibilities: {
         en: [
-          "Active contributor to several JavaScript libraries",
-          "Created documentation and tutorials",
-          "Fixed bugs and implemented new features"
+          "Directed and trained technical teams for the adoption of new technologies (Flutter, Vue.js, Laravel)",
+          "Developed and supervised technological solutions for large corporate clients such as San Fernando and Ferreyros",
+          "Effectively implemented control and monitoring systems through APIs, Flutter, and advanced web technologies"
         ],
         es: [
-          "Colaborador activo en varias bibliotecas JavaScript",
-          "Creó documentación y tutoriales",
-          "Corrigió errores e implementó nuevas funcionalidades"
+          "Dirección y formación de equipos técnicos para la adopción de nuevas tecnologías (Flutter, Vue.js, Laravel)",
+          "Desarrollo y supervisión de soluciones tecnológicas para grandes clientes corporativos como San Fernando y Ferreyros",
+          "Implementación efectiva de sistemas de control y seguimiento mediante APIs, Flutter y tecnologías web avanzadas"
         ]
       }
     }
@@ -620,36 +992,49 @@ export const appData = {
   
   // Educación y certificaciones
   education: {
-    university: {
-      name: "Tech University",
-      period: "2014-2018",
-      degree: {
-        en: "B.Sc. in Computer Science",
-        es: "Licenciatura en Ciencias de la Computación"
+    universities: [
+      {
+        name: "Universidad Católica San Pablo",
+        location: "Arequipa, Perú",
+        period: "2003-2007",
+        degree: {
+          en: "Computer Engineering",
+          es: "Ingeniería Informática"
+        }
       },
-      details: {
-        en: [
-          "GPA: 3.8/4.0",
-          "Specialized in Software Engineering",
-          "Thesis: 'Optimizing Web Applications for Performance'"
-        ],
-        es: [
-          "Promedio: 3.8/4.0",
-          "Especializado en Ingeniería de Software",
-          "Tesis: 'Optimización de Aplicaciones Web para Rendimiento'"
-        ]
+      {
+        name: "Universidad Continental",
+        location: "Arequipa, Perú",
+        period: "2016-2019",
+        degree: {
+          en: "Industrial Engineering",
+          es: "Ingeniería Industrial"
+        }
+      },
+      {
+        name: "42 Network",
+        location: "Madrid, España",
+        period: "2020-2024",
+        degree: {
+          en: "Low-level Programmer",
+          es: "Programador de bajo nivel"
+        }
       }
-    },
+    ],
     certifications: {
       en: [
-        "AWS Certified Developer",
-        "Google Cloud Professional",
-        "MongoDB Certified Developer"
+        "AWS Academy Cloud Foundations",
+        "Google Cloud: Core Infrastructure",
+        "Google Cloud: Compute Engine",
+        "Google Cloud: Kubernetes Engine",
+        "IBM Quantum Challenge: Spring 2023"
       ],
       es: [
-        "Desarrollador Certificado en AWS",
-        "Profesional de Google Cloud",
-        "Desarrollador Certificado de MongoDB"
+        "AWS Academy Cloud Foundations",
+        "Google Cloud: Infraestructura Core",
+        "Google Cloud: Compute Engine",
+        "Google Cloud: Kubernetes Engine",
+        "IBM Quantum Challenge: Primavera 2023"
       ]
     }
   },
@@ -657,36 +1042,47 @@ export const appData = {
   // Proyectos personales
   projects: [
     {
-      id: "portfolio",
+      id: "workflow_automation",
       name: {
-        en: "Portfolio Website",
-        es: "Sitio Web de Portafolio"
+        en: "Workflow Automation Platform",
+        es: "Plataforma de Automatización de Flujos de Trabajo"
       },
       description: {
-        en: "A responsive website showcasing my projects and skills using Vue.js and Tailwind CSS.",
-        es: "Un sitio web responsivo que muestra mis proyectos y habilidades usando Vue.js y Tailwind CSS."
+        en: "An advanced workflow automation system using n8n, integrating multiple services and APIs for business process automation.",
+        es: "Un sistema avanzado de automatización de flujos de trabajo utilizando n8n, integrando múltiples servicios y APIs para automatización de procesos de negocio."
       }
     },
     {
-      id: "ecommerce",
+      id: "container_management",
       name: {
-        en: "E-commerce System",
-        es: "Sistema de Comercio Electrónico"
+        en: "Container Management System",
+        es: "Sistema de Gestión de Contenedores"
       },
       description: {
-        en: "A full-stack e-commerce platform with Laravel backend and Vue.js frontend.",
-        es: "Una plataforma completa de comercio electrónico con backend en Laravel y frontend en Vue.js."
+        en: "A comprehensive container management solution built with Golang and Docker API for automated deployment and scaling of containerized applications.",
+        es: "Una solución integral de gestión de contenedores construida con Golang y API de Docker para despliegue y escalado automatizado de aplicaciones en contenedores."
       }
     },
     {
-      id: "chat_app",
+      id: "data_scraping",
       name: {
-        en: "Real-time Chat App",
-        es: "Aplicación de Chat en Tiempo Real"
+        en: "Advanced Data Scraping Tool",
+        es: "Herramienta Avanzada de Web Scraping"
       },
       description: {
-        en: "A chat application using WebSockets, Node.js, and MongoDB for real-time messaging.",
-        es: "Una aplicación de chat usando WebSockets, Node.js y MongoDB para mensajería en tiempo real."
+        en: "A sophisticated data scraping and analysis tool built with Python and Selenium for extracting and processing large volumes of web data.",
+        es: "Una sofisticada herramienta de web scraping y análisis construida con Python y Selenium para extraer y procesar grandes volúmenes de datos web."
+      }
+    },
+    {
+      id: "real_time_dashboard",
+      name: {
+        en: "Real-time Monitoring Dashboard",
+        es: "Panel de Monitoreo en Tiempo Real"
+      },
+      description: {
+        en: "A real-time monitoring dashboard using Vue.js, WebSockets, and Redis for visualizing system metrics and performance data.",
+        es: "Un panel de monitoreo en tiempo real utilizando Vue.js, WebSockets y Redis para visualizar métricas del sistema y datos de rendimiento."
       }
     }
   ],
@@ -722,6 +1118,8 @@ export const appData = {
         " - education: Show my education history",
         " - projects: Show my projects",
         " - skills: Show my technical skills",
+        " - contact: Display my contact information",
+        " - interests: Show my personal interests"
       ],
       unknown: "Unknown command:",
       notFound: "File or directory not found:",
@@ -758,12 +1156,63 @@ export const appData = {
         " - education: Mostrar mi historial educativo",
         " - projects: Mostrar mis proyectos",
         " - skills: Mostrar mis habilidades técnicas",
+        " - contact: Mostrar mi información de contacto",
+        " - interests: Mostrar mis intereses personales"
       ],
       unknown: "Comando desconocido:",
       notFound: "Archivo o directorio no encontrado:",
       notFile: "No es un archivo:",
       notDirectory: "No es un directorio:",
       suggestions: "Sugerencias:",
+    }
+  },
+  
+  // Intereses personales
+  interests: {
+    en: [
+      "Traveling",
+      "Photography",
+      "Technological research",
+      "Gym"
+    ],
+    es: [
+      "Viajar",
+      "Fotografía",
+      "Investigación tecnológica",
+      "Gimnasio"
+    ]
+  },
+  
+  // Información de contacto adicional
+  contact: {
+    phone: "(+34) 643 663 002",
+    email: "agonzales@peruyoung.com",
+    linkedin: "linkedin.com/in/angel-gonzales-laura",
+    github: "github.com/hanjelito",
+    location: {
+      en: "Madrid, Spain",
+      es: "Madrid, España"
+    }
+  },
+  
+  // Información adicional
+  additional_info: {
+    nationality: "Peruana",
+    languages: {
+      en: [
+        {name: "Spanish", level: "Native"},
+        {name: "English", level: "Professional working proficiency"},
+        {name: "Portuguese", level: "Basic"}
+      ],
+      es: [
+        {name: "Español", level: "Nativo"},
+        {name: "Inglés", level: "Competencia profesional"},
+        {name: "Portugués", level: "Básico"}
+      ]
+    },
+    availability: {
+      en: "Available for new professional opportunities",
+      es: "Disponible para nuevas oportunidades profesionales"
     }
   }
 };
