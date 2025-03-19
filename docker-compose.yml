@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   flask_app:
     build:
@@ -9,3 +11,37 @@ services:
       - ./app:/app
     environment:
       - FLASK_ENV=development
+    networks:
+      - automate
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx_server
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/certbot:/var/www/certbot
+    networks:
+      - automate
+    depends_on:
+      - certbot
+      - flask_app
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/certbot:/var/www/certbot
+    entrypoint: "/bin/sh -c 'certbot certonly --webroot --webroot-path=/var/www/certbot --email jgonzales@peruyoung.com --agree-tos --no-eff-email -d peruyoung.com'"
+    networks:
+      - automate
+
+networks:
+  automate:
+    driver: bridge
