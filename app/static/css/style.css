@@ -23,11 +23,17 @@ canvas {
 
 /* Input oculto para dispositivos móviles */
 .mobile-input {
-    position: absolute;
-    left: -9999px;
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 1px;
+    height: 1px;
     opacity: 0;
-    pointer-events: none;
     font-family: 'Fira Code', monospace;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: -1;
 }
 
 .info {
@@ -47,6 +53,24 @@ canvas {
 
 .desktop-info {
     display: inline;
+}
+
+.mobile-keyboard-btn {
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 @media (max-width: 768px) {
@@ -79,19 +103,35 @@ canvas {
         cursor: pointer;
     }
     
-    /* Mostrar el input en móviles solo cuando está enfocado */
-    .mobile-input:focus {
+    /* Hacer el input más accesible en móviles */
+    .mobile-input {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0.01;
-        pointer-events: auto;
+        bottom: 60px;
+        left: 10px;
+        width: calc(100vw - 80px);
+        height: 40px;
+        opacity: 0.1; /* Visible pero transparente para debug */
         z-index: 1000;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: transparent;
-        caret-color: transparent;
+        font-size: 16px; /* Prevenir zoom en iOS */
+        background: rgba(0,255,0,0.1);
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        color: #00ff00;
+        padding: 8px;
+    }
+    
+    .mobile-input:focus {
+        opacity: 0.8; /* Temporal: más visible cuando está enfocado */
+        border-color: #00ff00;
+    }
+    
+    .mobile-keyboard-btn {
+        display: block;
+    }
+    
+    .mobile-keyboard-btn:hover,
+    .mobile-keyboard-btn:active {
+        background: rgba(0, 255, 0, 0.2);
+        transform: scale(1.1);
     }
 }

@@ -15,7 +15,8 @@ export class Terminal {
         
         // Input móvil
         this.mobileInput = document.getElementById('mobileInput');
-        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        this.mobileKeyboardBtn = document.getElementById('mobileKeyboardBtn');
+        this.isMobile = this.detectMobile();
         
         // Estado del terminal
         this.fontSize = 16;
@@ -63,17 +64,18 @@ export class Terminal {
         this.canvas.addEventListener("wheel", this.handleWheel);
         window.addEventListener("resize", this.handleResize);
         
-        // Configurar eventos móviles
-        if (this.isMobile) {
-            this.canvas.addEventListener("touchstart", this.handleCanvasTouch);
-            this.canvas.addEventListener("click", this.handleCanvasTouch);
-            this.mobileInput.addEventListener("input", this.handleMobileInput);
-            this.mobileInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    this.handleMobileEnter();
-                }
-            });
-        }
+        // Configurar eventos móviles - siempre configurar para máxima compatibilidad
+        this.canvas.addEventListener("touchstart", this.handleCanvasTouch);
+        this.canvas.addEventListener("click", this.handleCanvasTouch);
+        this.mobileKeyboardBtn.addEventListener("touchstart", this.handleCanvasTouch);
+        this.mobileKeyboardBtn.addEventListener("click", this.handleCanvasTouch);
+        this.mobileInput.addEventListener("input", this.handleMobileInput);
+        this.mobileInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                this.handleMobileEnter();
+            }
+        });
         
         // Iniciar parpadeo del cursor
         this.cursorInterval = setInterval(() => {
@@ -245,18 +247,41 @@ export class Terminal {
         }
     }
     
+    // Detectar si es un dispositivo móvil
+    detectMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+               ('ontouchstart' in window) ||
+               (navigator.maxTouchPoints > 0) ||
+               (navigator.msMaxTouchPoints > 0);
+    }
+    
     // Manejar toque en canvas para dispositivos móviles
     handleCanvasTouch(e) {
-        e.preventDefault();
-        // Enfocar el input oculto para mostrar el teclado virtual
-        this.mobileInput.focus();
+        console.log('Canvas touched'); // Debug
         
-        // Sincronizar el valor del input con el comando actual
+        // No prevenir default para asegurar que funcione
+        
+        // Enfocar el input oculto para mostrar el teclado virtual
         this.mobileInput.value = this.command;
         
-        // Posicionar el cursor al final
+        // Múltiples intentos para activar el teclado
+        this.mobileInput.focus();
+        
+        // Simular un click del usuario
+        const focusEvent = new Event('focus', { bubbles: true });
+        this.mobileInput.dispatchEvent(focusEvent);
+        
+        // Forzar el foco con diferentes delays
         setTimeout(() => {
-            this.mobileInput.setSelectionRange(this.command.length, this.command.length);
+            this.mobileInput.focus();
+            this.mobileInput.select();
+        }, 0);
+        
+        setTimeout(() => {
+            this.mobileInput.focus();
+            if (this.command.length > 0) {
+                this.mobileInput.setSelectionRange(this.command.length, this.command.length);
+            }
         }, 100);
     }
     
