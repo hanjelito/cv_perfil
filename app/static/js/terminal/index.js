@@ -17,6 +17,8 @@ export class Terminal {
         this.mobileInput = document.getElementById('mobileInput');
         this.mobileKeyboardBtn = document.getElementById('mobileKeyboardBtn');
         this.isMobile = this.detectMobile();
+        this.keyboardVisible = false;
+        this.originalViewportHeight = window.innerHeight;
         
         // Estado del terminal
         this.fontSize = 16;
@@ -76,6 +78,13 @@ export class Terminal {
                 this.handleMobileEnter();
             }
         });
+        
+        // Detectar cuando aparece/desaparece el teclado virtual
+        this.mobileInput.addEventListener("focus", () => this.handleKeyboardShow());
+        this.mobileInput.addEventListener("blur", () => this.handleKeyboardHide());
+        
+        // Detectar cambios en el viewport para el teclado
+        window.addEventListener("resize", () => this.handleViewportChange());
         
         // Iniciar parpadeo del cursor
         this.cursorInterval = setInterval(() => {
@@ -314,5 +323,60 @@ export class Terminal {
         }, 100);
         
         this.renderer.drawInterface();
+    }
+    
+    // Manejar cuando aparece el teclado virtual
+    handleKeyboardShow() {
+        console.log('Keyboard shown');
+        this.keyboardVisible = true;
+        
+        // Ajustar el canvas para dejar espacio al teclado
+        setTimeout(() => {
+            this.adjustCanvasForKeyboard();
+        }, 300); // Delay para que el teclado termine de aparecer
+    }
+    
+    // Manejar cuando desaparece el teclado virtual
+    handleKeyboardHide() {
+        console.log('Keyboard hidden');
+        this.keyboardVisible = false;
+        
+        // Restaurar el tamaño original del canvas
+        setTimeout(() => {
+            this.renderer.resizeCanvas();
+        }, 300);
+    }
+    
+    // Detectar cambios en el viewport (para teclados virtuales)
+    handleViewportChange() {
+        if (this.isMobile) {
+            const currentHeight = window.innerHeight;
+            const heightDifference = this.originalViewportHeight - currentHeight;
+            
+            // Si la altura se redujo significativamente, probablemente apareció el teclado
+            if (heightDifference > 150 && !this.keyboardVisible) {
+                this.handleKeyboardShow();
+            } else if (heightDifference < 50 && this.keyboardVisible) {
+                this.handleKeyboardHide();
+            }
+        }
+    }
+    
+    // Ajustar canvas para el teclado virtual
+    adjustCanvasForKeyboard() {
+        const availableHeight = window.innerHeight;
+        const maxCanvasHeight = availableHeight - 120; // Espacio para input y padding
+        
+        // Reducir altura del canvas
+        this.canvas.style.maxHeight = maxCanvasHeight + 'px';
+        this.canvas.height = Math.min(this.canvas.height, maxCanvasHeight);
+        
+        // Scroll automático hacia abajo para mostrar la línea de comando
+        this.updateScroll(true);
+        this.renderer.drawInterface();
+        
+        // Scroll suave del body para mostrar el área de escritura
+        document.body.scrollTop = document.body.scrollHeight;
+        document.documentElement.scrollTop = document.documentElement.scrollHeight;
     }
 }

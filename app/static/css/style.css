@@ -94,6 +94,9 @@ canvas {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         user-select: none;
+        /* Permitir scroll suave cuando aparece el teclado */
+        overflow-x: hidden;
+        position: relative;
     }
     
     canvas {
@@ -101,28 +104,38 @@ canvas {
         max-width: 95vw;
         max-height: 85vh;
         cursor: pointer;
+        transition: max-height 0.3s ease-in-out;
     }
     
     /* Hacer el input más accesible en móviles */
     .mobile-input {
         position: fixed;
-        bottom: 60px;
+        bottom: 10px;
         left: 10px;
-        width: calc(100vw - 80px);
-        height: 40px;
-        opacity: 0.1; /* Visible pero transparente para debug */
+        width: calc(100vw - 20px);
+        height: 50px;
+        opacity: 0.3;
         z-index: 1000;
         font-size: 16px; /* Prevenir zoom en iOS */
-        background: rgba(0,255,0,0.1);
-        border: 1px solid #00ff00;
-        border-radius: 4px;
+        background: rgba(0,0,0,0.8);
+        border: 2px solid #00ff00;
+        border-radius: 8px;
         color: #00ff00;
-        padding: 8px;
+        padding: 12px;
+        font-family: 'Fira Code', monospace;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
     }
     
     .mobile-input:focus {
-        opacity: 0.8; /* Temporal: más visible cuando está enfocado */
+        opacity: 0.9;
         border-color: #00ff00;
+        box-shadow: 0 4px 20px rgba(0, 255, 0, 0.5);
+        background: rgba(0,0,0,0.9);
+    }
+    
+    .mobile-input::placeholder {
+        color: rgba(0, 255, 0, 0.5);
     }
     
     .mobile-keyboard-btn {
