@@ -21,6 +21,15 @@ canvas {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Input oculto para dispositivos móviles */
+.mobile-input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    font-family: 'Fira Code', monospace;
+}
+
 .info {
     position: absolute;
     bottom: 10px;
@@ -32,10 +41,57 @@ canvas {
     text-align: center;
 }
 
+.mobile-info {
+    display: none;
+}
+
+.desktop-info {
+    display: inline;
+}
+
 @media (max-width: 768px) {
     .info {
         font-size: 10px;
         width: 90%;
         white-space: normal;
+    }
+    
+    .mobile-info {
+        display: inline;
+    }
+    
+    .desktop-info {
+        display: none;
+    }
+    
+    body {
+        /* Prevenir zoom en dispositivos móviles */
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    canvas {
+        /* Hacer que el canvas sea responsive en móviles */
+        max-width: 95vw;
+        max-height: 85vh;
+        cursor: pointer;
+    }
+    
+    /* Mostrar el input en móviles solo cuando está enfocado */
+    .mobile-input:focus {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0.01;
+        pointer-events: auto;
+        z-index: 1000;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: transparent;
+        caret-color: transparent;
     }
 }

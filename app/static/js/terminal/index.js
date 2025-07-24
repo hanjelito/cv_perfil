@@ -13,6 +13,10 @@ export class Terminal {
         this.directoryStructure = directoryStructure;
         this.translations = translations;
         
+        // Input móvil
+        this.mobileInput = document.getElementById('mobileInput');
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
         // Estado del terminal
         this.fontSize = 16;
         this.lineHeight = this.fontSize + 8;
@@ -48,6 +52,8 @@ export class Terminal {
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleWheel = this.handleWheel.bind(this);
         this.handleResize = this.handleResize.bind(this);
+        this.handleMobileInput = this.handleMobileInput.bind(this);
+        this.handleCanvasTouch = this.handleCanvasTouch.bind(this);
     }
     
     // Inicializar el terminal
@@ -56,6 +62,18 @@ export class Terminal {
         document.addEventListener("keydown", this.handleKeyDown);
         this.canvas.addEventListener("wheel", this.handleWheel);
         window.addEventListener("resize", this.handleResize);
+        
+        // Configurar eventos móviles
+        if (this.isMobile) {
+            this.canvas.addEventListener("touchstart", this.handleCanvasTouch);
+            this.canvas.addEventListener("click", this.handleCanvasTouch);
+            this.mobileInput.addEventListener("input", this.handleMobileInput);
+            this.mobileInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    this.handleMobileEnter();
+                }
+            });
+        }
         
         // Iniciar parpadeo del cursor
         this.cursorInterval = setInterval(() => {
@@ -225,5 +243,51 @@ export class Terminal {
         if (forceToBottom || isAtBottom) {
             this.scrollOffset = Math.max(0, this.terminalOutput.length - visibleLines);
         }
+    }
+    
+    // Manejar toque en canvas para dispositivos móviles
+    handleCanvasTouch(e) {
+        e.preventDefault();
+        // Enfocar el input oculto para mostrar el teclado virtual
+        this.mobileInput.focus();
+        
+        // Sincronizar el valor del input con el comando actual
+        this.mobileInput.value = this.command;
+        
+        // Posicionar el cursor al final
+        setTimeout(() => {
+            this.mobileInput.setSelectionRange(this.command.length, this.command.length);
+        }, 100);
+    }
+    
+    // Manejar entrada de texto desde el input móvil
+    handleMobileInput(e) {
+        const newValue = e.target.value;
+        
+        // Actualizar el comando actual
+        this.command = newValue;
+        this.cursorPosition = newValue.length;
+        
+        // Redibujar la interfaz
+        this.renderer.drawInterface();
+    }
+    
+    // Manejar Enter en dispositivos móviles
+    handleMobileEnter() {
+        // Procesar comando
+        this.terminalOutput.push(`visitor@cv:${this.currentPath}$ ${this.command}`);
+        this.processCommand(this.command);
+        
+        // Limpiar comando e input
+        this.command = "";
+        this.cursorPosition = 0;
+        this.mobileInput.value = "";
+        
+        // Mantener el foco para siguiente comando
+        setTimeout(() => {
+            this.mobileInput.focus();
+        }, 100);
+        
+        this.renderer.drawInterface();
     }
 }

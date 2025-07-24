@@ -9,7 +9,12 @@
 </head>
 <body>
     <canvas id="terminalCanvas"></canvas>
-    <div class="info">Usa las flechas ↑↓ para navegar el historial de comandos | Tab para autocompletar | Escribe 'help' para ver los comandos disponibles</div>
+    <!-- Input oculto para dispositivos móviles -->
+    <input type="text" id="mobileInput" class="mobile-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <div class="info">
+        <span class="desktop-info">Usa las flechas ↑↓ para navegar el historial de comandos | Tab para autocompletar | Escribe 'help' para ver los comandos disponibles</span>
+        <span class="mobile-info">Toca la pantalla para escribir comandos | Escribe 'help' para ver los comandos disponibles</span>
+    </div>
     
     <script type="module" src="static/js/main.js"></script>
 </body>
