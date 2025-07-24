@@ -31,35 +31,6 @@ export class TerminalRenderer {
         this.drawInterface();
     }
     
-    // Redimensionar canvas específicamente para el teclado móvil
-    resizeCanvasForKeyboard(maxHeight) {
-        const devicePixelRatio = window.devicePixelRatio || 1;
-        const terminal = this.terminal;
-        
-        // Calcular dimensiones apropiadas
-        const canvasWidth = window.innerWidth - 40;
-        const canvasHeight = Math.min(maxHeight - 40, window.innerHeight - 40);
-        
-        // Establecer el tamaño real del canvas manteniendo la proporción
-        terminal.canvas.width = canvasWidth * devicePixelRatio;
-        terminal.canvas.height = canvasHeight * devicePixelRatio;
-        
-        // Establecer el tamaño de visualización del canvas
-        terminal.canvas.style.width = `${canvasWidth}px`;
-        terminal.canvas.style.height = `${canvasHeight}px`;
-        
-        // Reescalar el contexto correctamente
-        terminal.ctx = terminal.canvas.getContext("2d");
-        terminal.ctx.scale(devicePixelRatio, devicePixelRatio);
-        
-        // Mantener el tamaño de fuente
-        terminal.fontSize = Math.max(12, Math.min(18, window.innerWidth / 80));
-        terminal.lineHeight = terminal.fontSize + 8;
-        terminal.ctx.font = `${terminal.fontSize}px 'Fira Code', monospace`;
-        
-        // Redibujar la interfaz
-        this.drawInterface();
-    }
     
     // Calcular líneas visibles en el área del terminal
     getVisibleLines() {

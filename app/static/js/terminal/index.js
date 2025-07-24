@@ -17,9 +17,6 @@ export class Terminal {
         this.mobileInput = document.getElementById('mobileInput');
         this.mobileKeyboardBtn = document.getElementById('mobileKeyboardBtn');
         this.isMobile = this.detectMobile();
-        this.keyboardVisible = false;
-        this.originalViewportHeight = window.innerHeight;
-        this.resizeTimeout = null;
         
         // Estado del terminal
         this.fontSize = 16;
@@ -67,11 +64,9 @@ export class Terminal {
         this.canvas.addEventListener("wheel", this.handleWheel);
         window.addEventListener("resize", this.handleResize);
         
-        // Configurar eventos móviles - siempre configurar para máxima compatibilidad
+        // Configurar eventos móviles - simplificado
         this.canvas.addEventListener("touchstart", this.handleCanvasTouch);
         this.canvas.addEventListener("click", this.handleCanvasTouch);
-        this.mobileKeyboardBtn.addEventListener("touchstart", this.handleCanvasTouch);
-        this.mobileKeyboardBtn.addEventListener("click", this.handleCanvasTouch);
         this.mobileInput.addEventListener("input", this.handleMobileInput);
         this.mobileInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
@@ -79,13 +74,6 @@ export class Terminal {
                 this.handleMobileEnter();
             }
         });
-        
-        // Detectar cuando aparece/desaparece el teclado virtual
-        this.mobileInput.addEventListener("focus", () => this.handleKeyboardShow());
-        this.mobileInput.addEventListener("blur", () => this.handleKeyboardHide());
-        
-        // Detectar cambios en el viewport para el teclado
-        window.addEventListener("resize", () => this.handleViewportChange());
         
         // Iniciar parpadeo del cursor
         this.cursorInterval = setInterval(() => {
@@ -223,12 +211,6 @@ export class Terminal {
     
     // Manejar eventos de rueda del mouse para desplazamiento
     handleWheel(e) {
-        // Si el teclado está visible, no manejar scroll manual para evitar deformaciones
-        if (this.keyboardVisible) {
-            e.preventDefault();
-            return;
-        }
-        
         const visibleLines = this.renderer.getVisibleLines();
         
         if (e.deltaY < 0) {
@@ -271,30 +253,14 @@ export class Terminal {
                (navigator.msMaxTouchPoints > 0);
     }
     
-    // Manejar toque en canvas para dispositivos móviles
-    handleCanvasTouch(e) {
-        console.log('Canvas touched'); // Debug
-        
-        // No prevenir default para asegurar que funcione
-        
-        // Enfocar el input oculto para mostrar el teclado virtual
+    // Manejar toque en canvas para dispositivos móviles  
+    handleCanvasTouch() {
+        // Simplemente enfocar el input - el CSS se encarga del resto
         this.mobileInput.value = this.command;
-        
-        // Múltiples intentos para activar el teclado
         this.mobileInput.focus();
         
-        // Simular un click del usuario
-        const focusEvent = new Event('focus', { bubbles: true });
-        this.mobileInput.dispatchEvent(focusEvent);
-        
-        // Forzar el foco con diferentes delays
+        // Posicionar cursor al final
         setTimeout(() => {
-            this.mobileInput.focus();
-            this.mobileInput.select();
-        }, 0);
-        
-        setTimeout(() => {
-            this.mobileInput.focus();
             if (this.command.length > 0) {
                 this.mobileInput.setSelectionRange(this.command.length, this.command.length);
             }
@@ -330,77 +296,5 @@ export class Terminal {
         }, 100);
         
         this.renderer.drawInterface();
-    }
-    
-    // Manejar cuando aparece el teclado virtual
-    handleKeyboardShow() {
-        console.log('Keyboard shown');
-        this.keyboardVisible = true;
-        
-        // Ajustar el canvas para dejar espacio al teclado
-        setTimeout(() => {
-            this.adjustCanvasForKeyboard();
-        }, 300); // Delay para que el teclado termine de aparecer
-    }
-    
-    // Manejar cuando desaparece el teclado virtual
-    handleKeyboardHide() {
-        console.log('Keyboard hidden');
-        this.keyboardVisible = false;
-        
-        // Restaurar el tamaño original del canvas
-        setTimeout(() => {
-            // Limpiar estilos CSS que puedan interferir
-            this.canvas.style.maxHeight = '';
-            this.renderer.resizeCanvas();
-        }, 300);
-    }
-    
-    // Detectar cambios en el viewport (para teclados virtuales)
-    handleViewportChange() {
-        if (this.isMobile) {
-            const currentHeight = window.innerHeight;
-            const heightDifference = this.originalViewportHeight - currentHeight;
-            
-            // Debounce para evitar múltiples triggers
-            clearTimeout(this.resizeTimeout);
-            this.resizeTimeout = setTimeout(() => {
-                // Si la altura se redujo significativamente, probablemente apareció el teclado
-                if (heightDifference > 150 && !this.keyboardVisible) {
-                    this.handleKeyboardShow();
-                } else if (heightDifference < 50 && this.keyboardVisible) {
-                    this.handleKeyboardHide();
-                } else if (!this.keyboardVisible) {
-                    // Redimensionado normal sin teclado
-                    this.renderer.resizeCanvas();
-                }
-            }, 100); // Debounce de 100ms
-        } else {
-            // Desktop: redimensionado normal
-            this.renderer.resizeCanvas();
-        }
-    }
-    
-    // Ajustar canvas para el teclado virtual
-    adjustCanvasForKeyboard() {
-        const availableHeight = window.innerHeight;
-        const maxCanvasHeight = availableHeight - 120; // Espacio para input y padding
-        
-        // Solo ajustar el estilo CSS, no las propiedades internas del canvas
-        this.canvas.style.maxHeight = maxCanvasHeight + 'px';
-        
-        // Forzar un redimensionado correcto del canvas manteniendo la proporción
-        this.renderer.resizeCanvasForKeyboard(maxCanvasHeight);
-        
-        // Scroll automático hacia abajo para mostrar la línea de comando
-        this.updateScroll(true);
-        
-        // Scroll suave del body para mostrar el área de escritura
-        setTimeout(() => {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        }, 100);
     }
 }
