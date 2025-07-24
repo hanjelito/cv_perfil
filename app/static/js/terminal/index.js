@@ -19,6 +19,7 @@ export class Terminal {
         this.isMobile = this.detectMobile();
         this.keyboardVisible = false;
         this.originalViewportHeight = window.innerHeight;
+        this.resizeTimeout = null;
         
         // Estado del terminal
         this.fontSize = 16;
@@ -222,6 +223,12 @@ export class Terminal {
     
     // Manejar eventos de rueda del mouse para desplazamiento
     handleWheel(e) {
+        // Si el teclado está visible, no manejar scroll manual para evitar deformaciones
+        if (this.keyboardVisible) {
+            e.preventDefault();
+            return;
+        }
+        
         const visibleLines = this.renderer.getVisibleLines();
         
         if (e.deltaY < 0) {
@@ -343,6 +350,8 @@ export class Terminal {
         
         // Restaurar el tamaño original del canvas
         setTimeout(() => {
+            // Limpiar estilos CSS que puedan interferir
+            this.canvas.style.maxHeight = '';
             this.renderer.resizeCanvas();
         }, 300);
     }
@@ -353,12 +362,22 @@ export class Terminal {
             const currentHeight = window.innerHeight;
             const heightDifference = this.originalViewportHeight - currentHeight;
             
-            // Si la altura se redujo significativamente, probablemente apareció el teclado
-            if (heightDifference > 150 && !this.keyboardVisible) {
-                this.handleKeyboardShow();
-            } else if (heightDifference < 50 && this.keyboardVisible) {
-                this.handleKeyboardHide();
-            }
+            // Debounce para evitar múltiples triggers
+            clearTimeout(this.resizeTimeout);
+            this.resizeTimeout = setTimeout(() => {
+                // Si la altura se redujo significativamente, probablemente apareció el teclado
+                if (heightDifference > 150 && !this.keyboardVisible) {
+                    this.handleKeyboardShow();
+                } else if (heightDifference < 50 && this.keyboardVisible) {
+                    this.handleKeyboardHide();
+                } else if (!this.keyboardVisible) {
+                    // Redimensionado normal sin teclado
+                    this.renderer.resizeCanvas();
+                }
+            }, 100); // Debounce de 100ms
+        } else {
+            // Desktop: redimensionado normal
+            this.renderer.resizeCanvas();
         }
     }
     
@@ -367,16 +386,21 @@ export class Terminal {
         const availableHeight = window.innerHeight;
         const maxCanvasHeight = availableHeight - 120; // Espacio para input y padding
         
-        // Reducir altura del canvas
+        // Solo ajustar el estilo CSS, no las propiedades internas del canvas
         this.canvas.style.maxHeight = maxCanvasHeight + 'px';
-        this.canvas.height = Math.min(this.canvas.height, maxCanvasHeight);
+        
+        // Forzar un redimensionado correcto del canvas manteniendo la proporción
+        this.renderer.resizeCanvasForKeyboard(maxCanvasHeight);
         
         // Scroll automático hacia abajo para mostrar la línea de comando
         this.updateScroll(true);
-        this.renderer.drawInterface();
         
         // Scroll suave del body para mostrar el área de escritura
-        document.body.scrollTop = document.body.scrollHeight;
-        document.documentElement.scrollTop = document.documentElement.scrollHeight;
+        setTimeout(() => {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 100);
     }
 }
